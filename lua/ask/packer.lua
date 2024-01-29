@@ -24,7 +24,7 @@ return require('packer').startup(function (use)
     use('tpope/vim-fugitive');
     use('tpope/vim-commentary');
     use('mbbill/undotree');
-    use('jose-elias-alvarez/null-ls.nvim');
+    use('nvimtools/none-ls.nvim');
     use('nvim-telescope/telescope-ui-select.nvim');
     use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' });
     use('christoomey/vim-tmux-navigator');
@@ -33,7 +33,6 @@ return require('packer').startup(function (use)
     use('sindrets/diffview.nvim');
     use('folke/zen-mode.nvim');
     use('rafamadriz/friendly-snippets');
-    use('~/personal/treesitter/tree-sitter-ng-template');
     use({
         "windwp/nvim-autopairs",
         config = function () require("nvim-autopairs").setup {}; end,
