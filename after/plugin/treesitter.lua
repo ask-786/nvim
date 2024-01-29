@@ -1,6 +1,6 @@
 require('nvim-treesitter.configs').setup {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "javascript", "typescript", "c", "lua" },
+    ensure_installed = { 'javascript', 'typescript', 'c', 'lua' },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -19,6 +19,15 @@ require('nvim-treesitter.configs').setup {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
     },
-}
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = false, -- set to `false` to disable one of the mappings
+            node_incremental = '[',
+            scope_incremental = '{',
+            node_decremental = ']',
+        },
+    },
+};
 
 vim.keymap.set('n', '<leader>tsp', '<cmd>TSPlaygroundToggle<CR>');
