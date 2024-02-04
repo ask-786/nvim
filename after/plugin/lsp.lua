@@ -13,7 +13,7 @@ end;
 require('lspconfig.ui.windows').default_options.border = 'rounded';
 require('mason').setup({
 	ui = {
-		border = "rounded",
+		border = 'rounded',
 	},
 });
 
@@ -24,18 +24,18 @@ require('mason-lspconfig').setup({
 
 local on_attach = function (_, bufnr)
 	local opts = { buffer = bufnr, remap = false };
-	vim.keymap.set('n', "gd", function () vim.lsp.buf.definition(); end, opts);
-	vim.keymap.set('n', "K", function () vim.lsp.buf.hover(); end, opts);
-	vim.keymap.set('n', "<leader>e", function () vim.diagnostic.open_float(); end,
+	vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition(); end, opts);
+	vim.keymap.set('n', 'K', function () vim.lsp.buf.hover(); end, opts);
+	vim.keymap.set('n', '<leader>e', function () vim.diagnostic.open_float(); end,
 		opts);
-	vim.keymap.set('n', "[d", function () vim.diagnostic.goto_next(); end, opts);
-	vim.keymap.set('n', "]d", function () vim.diagnostic.goto_prev(); end, opts);
-	vim.keymap.set('n', "<leader>ca", function () vim.lsp.buf.code_action(); end,
+	vim.keymap.set('n', '[d', function () vim.diagnostic.goto_next(); end, opts);
+	vim.keymap.set('n', ']d', function () vim.diagnostic.goto_prev(); end, opts);
+	vim.keymap.set('n', '<leader>ca', function () vim.lsp.buf.code_action(); end,
 		opts);
-	vim.keymap.set('n', "<leader>rn", function () vim.lsp.buf.rename(); end, opts);
-	vim.keymap.set('i', "<C-a>", function () vim.lsp.buf.signature_help(); end,
+	vim.keymap.set('n', '<leader>rn', function () vim.lsp.buf.rename(); end, opts);
+	vim.keymap.set('i', '<C-a>', function () vim.lsp.buf.signature_help(); end,
 		opts);
-	vim.keymap.set("n", "<leader>dg", function () vim.diagnostic.setqflist(); end,
+	vim.keymap.set('n', '<leader>dg', function () vim.diagnostic.setqflist(); end,
 		opts);
 	vim.keymap.set({ 'n', 'x' }, '<leader>ff', function ()
 		vim.lsp.buf.format({
@@ -58,8 +58,8 @@ lsp_zero.on_attach(on_attach);
 
 lsp_config['dartls'].setup({
 	on_attach = on_attach,
-	root_dir = lsp_config.util.root_pattern("pubspec.yaml"),
-	filetypes = { "dart" },
+	root_dir = lsp_config.util.root_pattern('pubspec.yaml'),
+	filetypes = { 'dart' },
 	init_options = {
 		onlyAnalyzeProjectsWithOpenFiles = false,
 		suggestFromUnimportedLibraries = true,
@@ -70,9 +70,9 @@ lsp_config['dartls'].setup({
 	settings = {
 		dart = {
 			analysisExcludedFolders = {
-				vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
-				vim.fn.expand("$HOME/.pub-cache/"),
-				vim.fn.expand("$HOME/dev/flutter/"),
+				vim.fn.expand('$HOME/AppData/Local/Pub/Cache'),
+				vim.fn.expand('$HOME/.pub-cache/'),
+				vim.fn.expand('$HOME/dev/flutter/'),
 			},
 			updateImportsOnRename = true,
 			completeFunctionCalls = true,
@@ -91,9 +91,9 @@ lsp_config['dartls'].setup({
 
 lsp_config['gopls'].setup({
 	on_attach = on_attach,
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_dir = lsp_config.util.root_pattern("go.work", "go.mod", ".git"),
+	cmd = { 'gopls' },
+	filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+	root_dir = lsp_config.util.root_pattern('go.work', 'go.mod', '.git'),
 	settings = {
 		gopls = {
 			completeUnimported = true,
@@ -105,7 +105,7 @@ lsp_config['gopls'].setup({
 
 lsp_config['rust_analyzer'].setup({
 	on_attach = on_attach,
-	cmd = { "rustup", "run", "stable", "rust-analyzer" },
+	cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 });
 
 lsp_config['lua_ls'].setup({

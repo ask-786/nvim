@@ -13,13 +13,13 @@ return require('packer').startup(function (use)
 	});
 	use('nvim-tree/nvim-web-devicons');
 	use('themaxmarchuk/tailwindcss-colors.nvim');
-	use({ "catppuccin/nvim", as = "catppuccin" });
+	use({ 'catppuccin/nvim', as = 'catppuccin' });
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
 	use('nvim-treesitter/playground');
 	use({
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		requires = { { "nvim-lua/plenary.nvim" } }
+		'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	});
 	use('tpope/vim-fugitive');
 	use('tpope/vim-commentary');
@@ -34,8 +34,8 @@ return require('packer').startup(function (use)
 	use('folke/zen-mode.nvim');
 	use('rafamadriz/friendly-snippets');
 	use({
-		"windwp/nvim-autopairs",
-		config = function () require("nvim-autopairs").setup {}; end,
+		'windwp/nvim-autopairs',
+		config = function () require('nvim-autopairs').setup {}; end,
 	});
 	use({
 		'VonHeikemen/lsp-zero.nvim',
@@ -43,7 +43,7 @@ return require('packer').startup(function (use)
 		requires = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' }, -- Required
-			{                   -- Optional
+			{                         -- Optional
 				'williamboman/mason.nvim',
 				run = function ()
 					pcall(vim.cmd, 'MasonUpdate');
@@ -52,11 +52,11 @@ return require('packer').startup(function (use)
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' }, -- Required
+			{ 'hrsh7th/nvim-cmp' },  -- Required
 			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
 			{
 				'L3MON4D3/LuaSnip',
-				build = "make install_jsregexp"
+				build = 'make install_jsregexp'
 			}, -- Required
 			{ 'hrsh7th/cmp-path' },
 			{ 'hrsh7th/cmp-buffer' },
