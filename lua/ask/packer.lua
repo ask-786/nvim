@@ -27,7 +27,6 @@ return require('packer').startup(function (use)
 	use('nvimtools/none-ls.nvim');
 	use('nvim-telescope/telescope-ui-select.nvim');
 	use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' });
-	use('christoomey/vim-tmux-navigator');
 	use('lewis6991/gitsigns.nvim');
 	use('j-hui/fidget.nvim');
 	use('sindrets/diffview.nvim');
