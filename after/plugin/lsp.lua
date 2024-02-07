@@ -18,7 +18,7 @@ require('mason').setup({
 });
 
 require('mason-lspconfig').setup({
-	ensure_installed = { 'tsserver', 'eslint', 'lua_ls' },
+	ensure_installed = { 'tsserver', 'lua_ls' },
 	handlers = { lsp_zero.default_setup, },
 });
 
@@ -56,7 +56,7 @@ end;
 
 lsp_zero.on_attach(on_attach);
 
-lsp_config['dartls'].setup({
+lsp_config.dartls.setup({
 	on_attach = on_attach,
 	root_dir = lsp_config.util.root_pattern('pubspec.yaml'),
 	filetypes = { 'dart' },
@@ -89,7 +89,7 @@ lsp_config['dartls'].setup({
 	},
 });
 
-lsp_config['gopls'].setup({
+lsp_config.gopls.setup({
 	on_attach = on_attach,
 	cmd = { 'gopls' },
 	filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -103,12 +103,12 @@ lsp_config['gopls'].setup({
 	}
 });
 
-lsp_config['rust_analyzer'].setup({
+lsp_config.rust_analyzer.setup({
 	on_attach = on_attach,
 	cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 });
 
-lsp_config['lua_ls'].setup({
+lsp_config.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
@@ -116,6 +116,8 @@ lsp_config['lua_ls'].setup({
 		}
 	}
 });
+
+lsp_config.quick_lint_js.setup({});
 
 lsp_config.pyright.setup({
 	on_attach = on_attach,
