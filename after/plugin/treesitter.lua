@@ -23,9 +23,8 @@ require('nvim-treesitter.configs').setup {
 		enable = true,
 		keymaps = {
 			init_selection = false, -- set to `false` to disable one of the mappings
-			node_incremental = '[',
-			scope_incremental = '{',
-			node_decremental = ']',
+			node_incremental = '(',
+			node_decremental = ')',
 		},
 	},
 };
