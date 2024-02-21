@@ -9,9 +9,11 @@ return require('packer').startup(function (use)
 	use('rstacruz/vim-closer');
 	use({
 		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } }
+		requires = {
+			{ 'nvim-lua/plenary.nvim' },
+			{ 'nvim-tree/nvim-web-devicons' }
+		}
 	});
-	use('nvim-tree/nvim-web-devicons');
 	use('themaxmarchuk/tailwindcss-colors.nvim');
 	use({ 'catppuccin/nvim', as = 'catppuccin' });
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
