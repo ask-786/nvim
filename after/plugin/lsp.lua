@@ -127,10 +127,6 @@ lsp_zero.setup();
 
 local cmp = require('cmp');
 
--- this is the function that loads the extra snippets to luasnip
--- from rafamadriz/friendly-snippets
-require('luasnip.loaders.from_vscode').lazy_load()
-
 cmp.setup({
 	mapping = {
 		-- `Enter` key to confirm completion
