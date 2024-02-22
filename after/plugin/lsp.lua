@@ -129,12 +129,18 @@ local cmp = require('cmp');
 
 cmp.setup({
 	mapping = {
-		-- `Enter` key to confirm completion
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<CR>'] = cmp.mapping.confirm({ select = true })
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
+	},
+	snippet = {
+		expand = function (args)
+			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+		end,
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
