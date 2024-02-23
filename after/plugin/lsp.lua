@@ -108,6 +108,11 @@ lsp_config.rust_analyzer.setup({
 	cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 });
 
+lsp_config.angularls.setup({
+	root_dir = lsp_config.util.root_pattern('angular.json', 'project.json'), -- This is for monorepo's
+	filetypes = { 'angular', 'html', 'typescript', 'typescriptreact' },
+})
+
 lsp_config.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
@@ -154,7 +159,9 @@ cmp.setup({
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.prettier.with({
+			extra_filetypes = { 'angular' }
+		}),
 		null_ls.builtins.formatting.black,
 	},
 });
