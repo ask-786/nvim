@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>ps', function ()
 	builtin.grep_string({ search = vim.fn.input('Grep > ') });
 end)
 
-telescope.setup {
+telescope.setup({
 	extensions = {
 		['ui-select'] = {
 			require('telescope.themes').get_dropdown {
