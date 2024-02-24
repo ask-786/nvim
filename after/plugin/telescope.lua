@@ -48,4 +48,4 @@ telescope.setup {
 	}
 })
 
-telescope.load_extension('ui-select', 'fzf', 'harpoon')
+telescope.load_extension('ui-select', 'fzf')
