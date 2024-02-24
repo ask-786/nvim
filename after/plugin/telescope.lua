@@ -28,6 +28,16 @@ telescope.setup {
 	defaults = {
 		file_ignore_patterns = {
 			'node_modules', '.git/'
+		},
+		mappings = {
+			i = {
+				['<M-j>'] = 'results_scrolling_left',
+				['<M-k>'] = 'results_scrolling_right',
+			},
+			n = {
+				['<M-j>'] = 'results_scrolling_left',
+				['<M-k>'] = 'results_scrolling_right',
+			},
 		}
 	},
 	pickers = {
@@ -36,6 +46,6 @@ telescope.setup {
 			hidden = true
 		},
 	}
-}
+})
 
-telescope.load_extension('ui-select', 'fzf')
+telescope.load_extension('ui-select', 'fzf', 'harpoon')
