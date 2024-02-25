@@ -159,9 +159,10 @@ cmp.setup({
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
-		null_ls.builtins.formatting.prettier.with({
+		null_ls.builtins.formatting.prettierd.with({
 			extra_filetypes = { 'angular' }
 		}),
 		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.shfmt
 	},
 });
