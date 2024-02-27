@@ -1,2 +1,1 @@
-autocmd BufRead,BufEnter *.component.html set filetype=angular
-autocmd FileType angular setlocal commentstring=<!--%s-->
+autocmd BufRead,BufEnter *.component.html set filetype=angular.html

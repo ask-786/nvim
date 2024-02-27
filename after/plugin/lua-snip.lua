@@ -14,7 +14,6 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function ()
 	end
 end, { silent = true })
 
-ls.filetype_extend('angular', { 'html' })
 from_vscode.lazy_load()
 from_vscode.load_standalone({
 	path = '.vscode/ocw-v35.code-snippets'
