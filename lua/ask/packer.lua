@@ -14,7 +14,6 @@ return require('packer').startup(function (use)
 			{ 'nvim-tree/nvim-web-devicons' }
 		}
 	});
-	use('themaxmarchuk/tailwindcss-colors.nvim');
 	use({ 'catppuccin/nvim', as = 'catppuccin' });
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
 	use('nvim-treesitter/playground');
