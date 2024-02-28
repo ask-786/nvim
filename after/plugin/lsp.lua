@@ -125,32 +125,6 @@ lsp_config.pyright.setup({
 
 lsp_zero.setup();
 
-local cmp = require('cmp');
-
-cmp.setup({
-	mapping = {
-		['<C-d>'] = cmp.mapping.scroll_docs(4),
-		['<C-u>'] = cmp.mapping.scroll_docs(-4),
-		['<CR>'] = cmp.mapping.confirm({ select = true })
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	snippet = {
-		expand = function (args)
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-		{ name = 'path' },
-	}, {
-		{ name = 'buffer' },
-	})
-});
-
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
