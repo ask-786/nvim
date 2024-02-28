@@ -1,4 +1,4 @@
-local lsp_zero = require('lsp-zero').preset({});
+local lsp_zero = require('lsp-zero');
 local lsp_config = require('lspconfig');
 local null_ls = require('null-ls');
 
@@ -129,8 +129,8 @@ local cmp = require('cmp');
 
 cmp.setup({
 	mapping = {
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<CR>'] = cmp.mapping.confirm({ select = true })
 	},
 	window = {
