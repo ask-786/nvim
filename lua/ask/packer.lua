@@ -23,7 +23,12 @@ return require('packer').startup(function (use)
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	});
 	use('tpope/vim-fugitive');
-	use('tpope/vim-commentary');
+	use({
+		'numToStr/Comment.nvim',
+		config = function ()
+			require('Comment').setup()
+		end
+	});
 	use('mbbill/undotree');
 	use('nvimtools/none-ls.nvim');
 	use('nvim-telescope/telescope-ui-select.nvim');
@@ -34,6 +39,7 @@ return require('packer').startup(function (use)
 	use('sindrets/diffview.nvim');
 	use('folke/zen-mode.nvim');
 	use('rafamadriz/friendly-snippets');
+	use('tpope/vim-sleuth');
 	use({
 		'windwp/nvim-autopairs',
 		config = function () require('nvim-autopairs').setup {}; end,
