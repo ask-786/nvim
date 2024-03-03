@@ -49,22 +49,13 @@ return require('packer').startup(function (use)
 		branch = 'v3.x',
 		requires = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' }, -- Required
-			{
-				'williamboman/mason.nvim',
-				run = function ()
-					pcall(vim.cmd, 'MasonUpdate');
-				end,
-			},                                    -- Optional
-			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
+			{ 'neovim/nvim-lspconfig' },                                           -- Required
+			{ 'williamboman/mason.nvim' },                                         -- Optional
+			{ 'williamboman/mason-lspconfig.nvim' },                               -- Optional
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },  -- Required
-			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
-			{
-				'L3MON4D3/LuaSnip',
-				build = 'make install_jsregexp',
-			}, -- Required
+			{ 'hrsh7th/nvim-cmp' },                                                -- Required
+			{ 'hrsh7th/cmp-nvim-lsp' },                                            -- Required
+			{ 'L3MON4D3/LuaSnip',                 build = 'make install_jsregexp', }, -- Required
 			{ 'hrsh7th/cmp-path' },
 			{ 'hrsh7th/cmp-buffer' },
 			{ 'saadparwaiz1/cmp_luasnip' }
