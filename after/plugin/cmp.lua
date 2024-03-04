@@ -1,4 +1,4 @@
-local cmp = require('cmp');
+local cmp = require('cmp')
 
 cmp.setup({
 	mapping = {
@@ -6,14 +6,14 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 
 		-- Navigate between snippet placeholder
-		['<C-p>'] = cmp.mapping(function ()
+		['<C-p>'] = cmp.mapping(function()
 			if cmp.visible() then
 				cmp.select_prev_item({ behavior = 'insert' })
 			else
 				cmp.complete()
 			end
 		end),
-		['<C-n>'] = cmp.mapping(function ()
+		['<C-n>'] = cmp.mapping(function()
 			if cmp.visible() then
 				cmp.select_next_item({ behavior = 'insert' })
 			else
@@ -30,7 +30,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	snippet = {
-		expand = function (args)
+		expand = function(args)
 			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
@@ -40,5 +40,5 @@ cmp.setup({
 		{ name = 'path' },
 	}, {
 		{ name = 'buffer' },
-	})
-});
+	}),
+})
