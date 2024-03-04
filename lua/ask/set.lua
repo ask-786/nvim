@@ -24,8 +24,6 @@ vim.opt.isfname:append('@-@');
 vim.opt.colorcolumn = '80';
 vim.opt.updatetime = 50;
 
-vim.opt.cursorline = true
 vim.opt.breakindent = true
-vim.opt.inccommand = 'split'
 
 vim.g.mapleader = ' ';
