@@ -15,3 +15,6 @@ vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+
+vim.keymap.set('n', '[d', vim.diagnostic.goto_next)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_prev)
