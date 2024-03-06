@@ -1,12 +1,5 @@
-return {
-	'catppuccin/nvim',
-	name = 'catppuccin',
-	lazy = false,
-	priority = 1000,
-	cmd = function()
-		vim.cmd.colorscheme('catppuccin')
-	end,
-	config = {
+local config = function()
+	require('catppuccin').setup({
 		flavour = 'mocha', -- latte, frappe, macchiato, mocha
 		background = { -- :h background
 			light = 'latte',
@@ -53,5 +46,16 @@ return {
 				indentscope_color = '',
 			},
 		},
-	},
+	})
+end
+
+return {
+	'catppuccin/nvim',
+	name = 'catppuccin',
+	lazy = false,
+	priority = 1000,
+	cmd = function()
+		vim.cmd.colorscheme('catppuccin')
+	end,
+	config = config,
 }
