@@ -1,1 +1,2 @@
-require('ask');
+require('defaults')
+require('lazyconfig')

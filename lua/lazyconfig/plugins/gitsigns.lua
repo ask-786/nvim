@@ -1,4 +1,4 @@
-require('gitsigns').setup({
+local config = {
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
@@ -90,4 +90,9 @@ require('gitsigns').setup({
 	yadm = {
 		enable = false,
 	},
-})
+}
+
+return {
+	'lewis6991/gitsigns.nvim',
+	config = config,
+}
