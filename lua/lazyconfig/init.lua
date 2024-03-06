@@ -12,7 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('lazyconfig/plugins', {
+	checker = {
+		notify = false, -- get a notification when new updates are found
+	},
 	change_detection = {
-		notify = false,
+		notify = true,
+	},
+	ui = {
+		border = 'rounded',
 	},
 })
