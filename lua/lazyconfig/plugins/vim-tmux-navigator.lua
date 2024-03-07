@@ -1,8 +1,8 @@
 local keys = {
-	{ '<C-h>', vim.cmd.TmuxNavigateLeft },
-	{ '<C-j>', vim.cmd.TmuxNavigateDown },
-	{ '<C-k>', vim.cmd.TmuxNavigateUp },
-	{ '<C-l>', vim.cmd.TmuxNavigateRight },
+	{ '<C-h>', vim.cmd.TmuxNavigateLeft, 'n' },
+	{ '<C-j>', vim.cmd.TmuxNavigateDown, 'n' },
+	{ '<C-k>', vim.cmd.TmuxNavigateUp, 'n' },
+	{ '<C-l>', vim.cmd.TmuxNavigateRight, 'n' },
 }
 
 return {

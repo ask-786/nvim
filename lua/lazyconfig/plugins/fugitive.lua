@@ -1,8 +1,8 @@
 return {
 	'tpope/vim-fugitive',
-    lazy = false,
+	lazy = false,
 	keys = {
-		{ '<leader>gs', ':Git<CR>' },
-		{ '<leader>gl', ':Git log<CR>' },
+		{ '<leader>gs', ':Git<CR>', 'n' },
+		{ '<leader>gl', ':Git log<CR>', 'n' },
 	},
 }
