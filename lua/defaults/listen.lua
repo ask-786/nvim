@@ -14,3 +14,9 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	pattern = '*',
 	command = [[%s/\s\+$//e]],
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
+	group = vim.api.nvim_create_augroup('set-angular-filetype', { clear = true }),
+	pattern = '*.component.html',
+	command = [[set filetype=angular.html]],
+})

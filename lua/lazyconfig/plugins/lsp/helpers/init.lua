@@ -6,7 +6,7 @@ local function allow_format(servers)
 	end
 end
 
-M.onattach = function(_, bufnr)
+M.on_attach = function(_, bufnr)
 	local map = function(mode, keys, action, desc)
 		local opts = { buffer = bufnr, remap = false, desc = desc }
 		vim.keymap.set(mode, keys, action, opts)

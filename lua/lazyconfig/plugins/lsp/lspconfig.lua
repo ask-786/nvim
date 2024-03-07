@@ -1,4 +1,4 @@
-local on_attach = require('lazyconfig.plugins.lsp.helpers').onattach
+local on_attach = require('lazyconfig.plugins.lsp.helpers').on_attach
 local config = function()
 
 	local lsp_zero = require('lsp-zero')
