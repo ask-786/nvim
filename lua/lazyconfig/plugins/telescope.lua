@@ -2,15 +2,15 @@ local config = function()
 	local builtin = require('telescope.builtin')
 	local telescope = require('telescope')
 
-	vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-	vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
-	vim.keymap.set('n', '<leader>pa', builtin.oldfiles, {})
-	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, {})
-	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, {})
-	vim.keymap.set('n', '<C-g>', builtin.git_files, {})
+	vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[P]roject [F]iles' })
+	vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = '[P]roject [G]rep' })
+	vim.keymap.set('n', '<leader>pa', builtin.oldfiles, { desc = '[P]roject Old Files' })
+	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[P]roject [R]eferences' })
+	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, { desc = '[P]roject Diagnostics' })
+	vim.keymap.set('n', '<C-g>', builtin.git_files, { desc = 'Git Files' })
 	vim.keymap.set('n', '<leader>ps', function()
 		builtin.grep_string({ search = vim.fn.input('Grep > ') })
-	end)
+	end, {desc = '[P]roject [S]earch'})
 
 	telescope.setup({
 		extensions = {

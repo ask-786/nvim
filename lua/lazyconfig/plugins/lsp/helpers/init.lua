@@ -7,29 +7,17 @@ local function allow_format(servers)
 end
 
 M.onattach = function(_, bufnr)
-	local opts = { buffer = bufnr, remap = false }
-	vim.keymap.set('n', 'gd', function()
-		vim.lsp.buf.definition()
-	end, opts)
-	vim.keymap.set('n', 'K', function()
-		vim.lsp.buf.hover()
-	end, opts)
-	vim.keymap.set('n', '<leader>e', function()
-		vim.diagnostic.open_float()
-	end, opts)
-	vim.keymap.set('n', '<leader>ca', function()
-		vim.lsp.buf.code_action()
-	end, opts)
-	vim.keymap.set('n', '<leader>rn', function()
-		vim.lsp.buf.rename()
-	end, opts)
-	vim.keymap.set('i', '<C-a>', function()
-		vim.lsp.buf.signature_help()
-	end, opts)
-	vim.keymap.set('n', '<leader>dg', function()
-		vim.diagnostic.setqflist()
-	end, opts)
-	vim.keymap.set({ 'n', 'x' }, '<leader>ff', function()
+	local map = function(mode, keys, action, desc)
+		local opts = { buffer = bufnr, remap = false, desc = desc }
+		vim.keymap.set(mode, keys, action, opts)
+	end
+
+	map('n', 'gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
+	map('n', 'K', vim.lsp.buf.hover, 'Lsp Hover')
+	map('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+	map('n', '<leader>rn', vim.lsp.buf.rename, '[R]ename')
+	map('i', '<C-a>', vim.lsp.buf.signature_help, 'Signature Help')
+	map({ 'n', 'x' }, '<leader>ff', function()
 		vim.lsp.buf.format({
 			async = false,
 			timeout_ms = 10000,
@@ -42,7 +30,7 @@ M.onattach = function(_, bufnr)
 				'jsonls',
 			}),
 		})
-	end, opts)
+	end, '[F]ormat [F]ile')
 end
 
 return M

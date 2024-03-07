@@ -10,7 +10,7 @@ local config = function()
 		vim.wo.wrap = false
 		vim.wo.number = true
 		vim.wo.rnu = true
-	end)
+	end, { desc = 'Zen Mode' })
 end
 
 return {

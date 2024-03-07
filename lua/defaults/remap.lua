@@ -1,20 +1,21 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Ex' })
 
-vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv')
-vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv')
+vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv', { desc = 'Move Selected Lines Downwards' })
+vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv', { desc = 'Move Selected Lines Upwards' })
 
-vim.keymap.set('x', '<leader>p', '"_dP')
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'No Idea' })
 
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump Half Page [D]ownwards' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump Half Page [U]pwards' })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y]ank to System Clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y]ank to System Clipboard' })
 
-vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
-vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
-
-vim.keymap.set('n', '[d', vim.diagnostic.goto_next)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>dg', function()
+	vim.diagnostic.setqflist()
+end, { desc = '[D]ia[G]nostics' })
