@@ -14,16 +14,6 @@ return {
 		end,
 	},
 
-	-- LSP Tools
-	{ 'nvimtools/none-ls.nvim' },
-	{ 'neovim/nvim-lspconfig' }, -- Required
-	{ 'williamboman/mason.nvim' }, -- Optional
-	{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-	},
-
 	-- Telescope Extensions
 	{
 		'nvim-telescope/telescope-ui-select.nvim',

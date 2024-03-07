@@ -1,4 +1,7 @@
 local setup = function()
+	local lsp_zero = require('lsp-zero')
+	lsp_zero.extend_cmp()
+
 	local cmp = require('cmp')
 	cmp.setup({
 		mapping = {
@@ -46,6 +49,7 @@ end
 
 return {
 	'hrsh7th/nvim-cmp',
+	event = 'InsertEnter',
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
