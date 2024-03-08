@@ -13,6 +13,7 @@ M.on_attach = function(_, bufnr)
 	end
 
 	map('n', 'gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
+	map('n', 'gD', vim.lsp.buf.declaration, '[G]o to [D]eclaration')
 	map('n', 'K', vim.lsp.buf.hover, 'Lsp Hover')
 	map('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 	map('n', '<leader>rn', vim.lsp.buf.rename, '[R]ename')
