@@ -1,7 +1,10 @@
+local keys = {
+	{ '<leader>df', ':DiffviewFileHistory %<cr>', 'n' },
+	{ '<leader>dc', ':DiffviewClose<cr>', 'n' },
+}
+
 return {
 	'sindrets/diffview.nvim',
-	keys = {
-		{ '<leader>df', ':DiffviewFileHistory %<cr>', 'n' },
-		{ '<leader>dc', ':DiffviewClose<cr>', 'n' },
-	},
+	lazy = true,
+	keys = keys,
 }
