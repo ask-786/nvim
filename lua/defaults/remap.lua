@@ -16,6 +16,5 @@ vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y]ank to System Clipboard' 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>dg', function()
-	vim.diagnostic.setqflist()
-end, { desc = '[D]ia[G]nostics' })
+vim.keymap.set('n', '<leader>dg', vim.diagnostic.setqflist, { desc = '[D]ia[G]nostics' })
+vim.keymap.set('n', '<leader>tsp', '<cmd>:InspectTree<cr>', { desc = '[D]ia[G]nostics' })
