@@ -1,9 +1,8 @@
 local on_attach = require('lazyconfig.plugins.lsp.helpers').on_attach
 local config = function()
-
 	local lsp_zero = require('lsp-zero')
 	lsp_zero.extend_lspconfig()
-    lsp_zero.on_attach(on_attach)
+	lsp_zero.on_attach(on_attach)
 
 	local lsp_config = require('lspconfig')
 	require('lspconfig.ui.windows').default_options.border = 'rounded'
