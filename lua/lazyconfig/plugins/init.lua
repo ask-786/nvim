@@ -3,12 +3,14 @@ return {
 	{ 'nvim-tree/nvim-web-devicons' },
 	{
 		'windwp/nvim-autopairs',
+		event = 'BufEnter',
 		config = function()
 			require('nvim-autopairs').setup({})
 		end,
 	},
 	{
 		'numToStr/Comment.nvim',
+		event = 'BufEnter',
 		config = function()
 			require('Comment').setup()
 		end,
