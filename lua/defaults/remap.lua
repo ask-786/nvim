@@ -9,6 +9,8 @@ vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'No Idea' })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump Half Page [D]ownwards' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump Half Page [U]pwards' })
+vim.keymap.set('n', '<leader>vs', vim.cmd.vsplit, { desc = 'Split screen Vertically' })
+vim.keymap.set('n', '<leader>hs', vim.cmd.split, { desc = 'Split screen Horizontally' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y]ank to System Clipboard' })
 vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y]ank to System Clipboard' })
