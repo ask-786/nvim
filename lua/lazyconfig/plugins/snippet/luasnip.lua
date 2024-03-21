@@ -4,18 +4,14 @@ local config = function()
 	vim.keymap.set({ 'i' }, '<C-K>', function()
 		ls.expand()
 	end, { silent = true, desc = 'LuaSnip Expand' })
+
 	vim.keymap.set({ 'i', 's' }, '<C-L>', function()
 		ls.jump(1)
 	end, { silent = true, desc = 'LuaSnip Jump Forward' })
+
 	vim.keymap.set({ 'i', 's' }, '<C-J>', function()
 		ls.jump(-1)
 	end, { silent = true, desc = 'LuaSnip Jump Backward' })
-
-	vim.keymap.set({ 'i', 's' }, '<C-E>', function()
-		if ls.choice_active() then
-			ls.change_choice(1)
-		end
-	end, { silent = true, desc = 'LuaSnip Chage Choice' })
 end
 
 return {
