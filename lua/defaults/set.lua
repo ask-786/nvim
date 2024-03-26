@@ -17,6 +17,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
 
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = { 'number' }
+
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append('@-@')

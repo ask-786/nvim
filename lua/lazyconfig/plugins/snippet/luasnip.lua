@@ -12,6 +12,9 @@ local config = function()
 	vim.keymap.set({ 'i', 's' }, '<C-J>', function()
 		ls.jump(-1)
 	end, { silent = true, desc = 'LuaSnip Jump Backward' })
+
+	ls.filetype_extend('typescript', { 'tsdoc' })
+	ls.filetype_extend('javascript', { 'jsdoc' })
 end
 
 return {
