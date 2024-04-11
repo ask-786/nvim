@@ -8,7 +8,8 @@ local config = function()
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.stylua,
-            null_ls.builtins.formatting.google_java_format
+			null_ls.builtins.formatting.google_java_format,
+			null_ls.builtins.formatting.pretty_php,
 		},
 	})
 end
