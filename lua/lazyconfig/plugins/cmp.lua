@@ -55,7 +55,7 @@ return {
 		'hrsh7th/cmp-buffer',
 		'hrsh7th/cmp-path',
 		'saadparwaiz1/cmp_luasnip',
-		'VonHeikemen/lsp-zero.nvim'
+		'VonHeikemen/lsp-zero.nvim',
 	},
 	config = setup,
 }

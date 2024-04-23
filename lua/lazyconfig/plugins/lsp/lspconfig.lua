@@ -9,14 +9,8 @@ local config = function()
 
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
-		root_dir = lsp_config.util.root_pattern('pubspec.yaml'),
-		filetypes = { 'dart' },
 		init_options = {
 			onlyAnalyzeProjectsWithOpenFiles = false,
-			suggestFromUnimportedLibraries = true,
-			closingLabels = true,
-			outline = true,
-			fluttreOutline = true,
 		},
 		settings = {
 			dart = {
@@ -26,17 +20,7 @@ local config = function()
 					vim.fn.expand('$HOME/dev/flutter/'),
 				},
 				updateImportsOnRename = true,
-				completeFunctionCalls = true,
-				showTodos = true,
 			},
-		},
-		docs = {
-			description = [[
-            https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server/tool/lsp_spec
-
-            Language server for dart.
-        ]],
-			default_config = { root_dir = [[root_pattern("pubspec.yaml")]] },
 		},
 	})
 
