@@ -1,4 +1,4 @@
-local setup = function()
+local config = function()
 	local lsp_zero = require('lsp-zero')
 	lsp_zero.extend_cmp()
 
@@ -57,5 +57,5 @@ return {
 		'saadparwaiz1/cmp_luasnip',
 		'VonHeikemen/lsp-zero.nvim',
 	},
-	config = setup,
+	config = config,
 }

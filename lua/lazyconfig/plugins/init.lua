@@ -15,9 +15,24 @@ return {
 			require('Comment').setup()
 		end,
 	},
+	{ 'tpope/vim-sleuth' },
 
-	-- Telescope Extensions
+	{ -- Mini plugins
+		'echasnovski/mini.surround',
+		version = '*',
+		config = function()
+			require('mini.surround').setup()
+		end,
+	},
 	{
+		'echasnovski/mini.cursorword',
+		version = '*',
+		config = function()
+			require('mini.cursorword').setup()
+		end,
+	},
+
+	{ -- Telescope Extensions
 		'nvim-telescope/telescope-ui-select.nvim',
 		dependencies = 'nvim-telescope/telescope.nvim',
 	},
