@@ -16,6 +16,7 @@ require('lazy').setup('lazyconfig/plugins', {
 		notify = false, -- get a notification when new updates are found
 	},
 	change_detection = {
+		enabled = true,
 		notify = false,
 	},
 	ui = {
