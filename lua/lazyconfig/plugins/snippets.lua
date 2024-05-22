@@ -9,7 +9,7 @@ local function luasnip_config()
 		ls.jump(1)
 	end, { silent = true, desc = 'LuaSnip Jump Forward' })
 
-	vim.keymap.set({ 'i', 's' }, '<C-J>', function()
+	vim.keymap.set({ 'i', 's' }, '<C-H>', function()
 		ls.jump(-1)
 	end, { silent = true, desc = 'LuaSnip Jump Backward' })
 

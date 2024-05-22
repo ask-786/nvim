@@ -100,6 +100,17 @@ M.lsp_config = function()
 
 	lsp_config.quick_lint_js.setup({})
 
+	lsp_config.tsserver.setup({
+		settings = {
+			completions = {
+				completeFunctionCalls = true,
+			},
+			implicitProjectConfiguration = {
+				checkJs = true,
+			},
+		},
+	})
+
 	lsp_config.pyright.setup({
 		on_attach = on_attach,
 	})
