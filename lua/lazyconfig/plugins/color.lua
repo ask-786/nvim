@@ -31,15 +31,13 @@ local config = function()
 			operators = {},
 		},
 		color_overrides = {},
-		custom_highlights = {},
+		custom_highlights = {
+			CursorLine = { bg = '#18181A' },
+		},
 		integrations = {
-			cmp = true,
-			gitsigns = true,
-			nvimtree = true,
+			diffview = true,
 			harpoon = true,
 			mason = true,
-			treesitter = true,
-			notify = false,
 			fidget = true,
 			mini = {
 				enabled = true,
