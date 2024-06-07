@@ -1,5 +1,9 @@
-local function luasnip_config()
+local luasnip_config = function(opts)
 	local ls = require('luasnip')
+
+	if opts then
+		require('luasnip').config.setup(opts)
+	end
 
 	vim.keymap.set({ 'i' }, '<C-K>', function()
 		ls.expand()
