@@ -7,6 +7,6 @@ local keys = {
 
 return {
 	'christoomey/vim-tmux-navigator',
-    lazy = true,
+	lazy = true,
 	keys = keys,
 }
