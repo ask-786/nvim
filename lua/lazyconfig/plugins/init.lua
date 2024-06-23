@@ -19,7 +19,7 @@ return {
 
 	{ -- Mini plugins
 		'echasnovski/mini.surround',
-		version = '*',
+		version = false,
 		config = function()
 			require('mini.surround').setup()
 		end,
