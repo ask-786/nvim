@@ -24,13 +24,6 @@ return {
 			require('mini.surround').setup()
 		end,
 	},
-	{
-		'echasnovski/mini.cursorword',
-		version = '*',
-		config = function()
-			require('mini.cursorword').setup()
-		end,
-	},
 
 	{ -- Telescope Extensions
 		'nvim-telescope/telescope-ui-select.nvim',
