@@ -11,21 +11,13 @@ local config = function()
 		harpoon.ui:toggle_quick_menu(harpoon:list())
 	end, { desc = 'Toggle quickmenu (harpoon)' })
 
-	vim.keymap.set('n', '<A-h>', function()
-		harpoon:list():select(1)
-	end, { desc = 'File 1 (harpoon)' })
+	local keys = { 'h', 'j', 'k', 'l' }
 
-	vim.keymap.set('n', '<A-j>', function()
-		harpoon:list():select(2)
-	end, { desc = 'File 2 (harpoon)' })
-
-	vim.keymap.set('n', '<A-k>', function()
-		harpoon:list():select(3)
-	end, { desc = 'File 2 (harpoon)' })
-
-	vim.keymap.set('n', '<A-l>', function()
-		harpoon:list():select(4)
-	end, { desc = 'File 4 (harpoon)' })
+	for key, value in ipairs(keys) do
+		vim.keymap.set('n', '<A-' .. value .. '>', function()
+			harpoon:list():select(key)
+		end, { desc = 'File ' .. key .. ' (harpoon)' })
+	end
 end
 
 return {
