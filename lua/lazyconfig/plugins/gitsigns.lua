@@ -52,6 +52,7 @@ local config = function()
 		end,
 
 		current_line_blame = true,
+		current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
 		preview_config = {
 			border = 'rounded',
 			style = 'minimal',
@@ -64,5 +65,6 @@ end
 
 return {
 	'lewis6991/gitsigns.nvim',
+	version = '0.9.0',
 	config = config,
 }
