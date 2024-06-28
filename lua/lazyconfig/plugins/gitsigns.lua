@@ -24,6 +24,7 @@ local on_attach = function(bufnr)
 		end
 	end, 'Prev Hunk')
 
+	-- stylua: ignore start
 	map('n', '<leader>gS', gs.stage_hunk, 'Stage Hunk')
 	map('n', '<leader>gu', gs.reset_hunk, 'Reset Hunk')
 	map('n', '<leader>gU', gs.undo_stage_hunk, 'Undo Stage')
@@ -31,22 +32,11 @@ local on_attach = function(bufnr)
 	map('n', '<leader>gk', gs.preview_hunk, 'Preivew Hunk')
 	map('n', '<leader>gd', gs.diffthis, 'Diff File')
 	map('n', '<leader>td', gs.toggle_deleted, 'Diff File')
-
-	map('v', '<leader>gS', function()
-		gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-	end, 'Stage Hunk')
-
-	map('v', '<leader>gu', function()
-		gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-	end, 'Reset Hunk')
-
-	map('n', '<leader>gb', function()
-		gs.blame_line({ full = true })
-	end, 'Blame Line')
-
-	map('n', '<leader>gD', function()
-		gs.diffthis('~')
-	end, 'Diff File')
+	map('v', '<leader>gS', function() gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, 'Stage Hunk')
+	map('v', '<leader>gu', function() gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, 'Reset Hunk')
+	map('n', '<leader>gb', function() gs.blame_line({ full = true }) end, 'Blame Line')
+	map('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff File')
+	-- stylua: ignore end
 end
 
 local config = function()

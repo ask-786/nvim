@@ -5,17 +5,11 @@ local luasnip_config = function(opts)
 		require('luasnip').config.setup(opts)
 	end
 
-	vim.keymap.set({ 'i' }, '<C-K>', function()
-		ls.expand()
-	end, { silent = true, desc = 'LuaSnip Expand' })
-
-	vim.keymap.set({ 'i', 's' }, '<C-L>', function()
-		ls.jump(1)
-	end, { silent = true, desc = 'LuaSnip Jump Forward' })
-
-	vim.keymap.set({ 'i', 's' }, '<C-H>', function()
-		ls.jump(-1)
-	end, { silent = true, desc = 'LuaSnip Jump Backward' })
+	--stylua: ignore start
+	vim.keymap.set({ 'i' }, '<C-K>', ls.expand, { silent = true, desc = 'LuaSnip Expand' })
+	vim.keymap.set({ 'i', 's' }, '<C-L>', function() ls.jump(1) end, { silent = true, desc = 'LuaSnip Jump Forward' })
+	vim.keymap.set({ 'i', 's' }, '<C-H>', function() ls.jump(-1) end, { silent = true, desc = 'LuaSnip Jump Backward' })
+	--stylua: ignore end
 
 	ls.filetype_extend('typescript', { 'tsdoc' })
 	ls.filetype_extend('javascript', { 'jsdoc' })
