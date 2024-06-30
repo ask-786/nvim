@@ -13,10 +13,10 @@ local config = function()
 
 	local keys = { 'h', 'j', 'k', 'l' }
 
-	for key, value in ipairs(keys) do
+	for i, value in ipairs(keys) do
 		vim.keymap.set('n', '<A-' .. value .. '>', function()
-			harpoon:list():select(key)
-		end, { desc = 'File ' .. key .. ' (harpoon)' })
+			harpoon:list():select(i)
+		end, { desc = 'File ' .. i .. ' (harpoon)' })
 	end
 end
 

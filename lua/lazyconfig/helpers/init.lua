@@ -136,6 +136,7 @@ M.lsp_config = function()
 	lsp_config.quick_lint_js.setup({})
 
 	lsp_config.tsserver.setup({
+		on_attach = on_attach,
 		settings = {
 			completions = {
 				completeFunctionCalls = true,

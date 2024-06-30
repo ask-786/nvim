@@ -1,3 +1,13 @@
+_G.get_status_line = function()
+	local branch =
+		vim.fn.system('git branch --show-current  2> /dev/null | tr -d \'\n\'')
+	if branch and branch ~= '' then
+		return branch
+	else
+		return ''
+	end
+end
+
 vim.opt.guicursor = ''
 
 vim.opt.nu = true
@@ -28,5 +38,7 @@ vim.opt.colorcolumn = '80'
 vim.opt.updatetime = 50
 
 vim.opt.breakindent = true
+vim.opt.statusline =
+	'%{v:lua.get_status_line()} - %f %h%m%r%=%-14.(%l,%c%V%) %P'
 
 vim.g.mapleader = ' '
