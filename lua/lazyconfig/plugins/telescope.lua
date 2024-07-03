@@ -2,6 +2,9 @@ local config = function()
 	local builtin = require('telescope.builtin')
 	local telescope = require('telescope')
 
+	local grep_func = function()
+		builtin.grep_string({ search = vim.fn.input('Grep > ') })
+	end
 
 	--stylua: ignore start
 	vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[P]roject [F]iles' })
@@ -9,12 +12,10 @@ local config = function()
 	vim.keymap.set('n', '<leader>pa', builtin.oldfiles, { desc = '[P]roject Old Files' })
 	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[P]roject [R]eferences' })
 	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, { desc = '[P]roject Diagnostics' })
+	vim.keymap.set('n', '<leader>pt', builtin.resume, { desc = '[P]roject [T]elescope' })
+	vim.keymap.set('n', '<leader>ps', grep_func, { desc = '[P]roject [S]earch' })
 	vim.keymap.set('n', '<C-g>', builtin.git_files, { desc = 'Git Files' })
 	--stylua: ignore end
-
-	vim.keymap.set('n', '<leader>ps', function()
-		builtin.grep_string({ search = vim.fn.input('Grep > ') })
-	end, { desc = '[P]roject [S]earch' })
 
 	telescope.setup({
 		extensions = {
