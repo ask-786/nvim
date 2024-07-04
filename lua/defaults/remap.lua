@@ -14,8 +14,8 @@ vim.keymap.set('n', '<leader>vs', vim.cmd.vsplit, { desc = 'Split screen Vertica
 vim.keymap.set('n', '<leader>hs', vim.cmd.split, { desc = 'Split screen Horizontally' })
 
 vim.keymap.set('n', '<A-t>', vim.cmd.tabnew, { desc = 'Create new Tab' })
-vim.keymap.set('n', '<leader>tn', vim.cmd.tabnext, { desc = 'Jump to next Tab' })
-vim.keymap.set('n', '<leader>tp', vim.cmd.tabprevious, { desc = 'Jump to previous Tab' })
+vim.keymap.set('n', '<A-n>', vim.cmd.tabnext, { desc = 'Jump to next Tab' })
+vim.keymap.set('n', '<A-p>', vim.cmd.tabprevious, { desc = 'Jump to previous Tab' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y]ank to System Clipboard' })
 vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y]ank to System Clipboard' })
