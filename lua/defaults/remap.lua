@@ -1,28 +1,34 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Ex' })
+---@param mode string | table
+---@param map string
+---@param command string
+---@param desc string
+local map = function(mode, map, command, desc)
+	vim.keymap.set(mode, map, command, { desc = desc })
+end
 
---stylua: ignore start
-vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv', { desc = 'Move Selected Lines Downwards' })
-vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv', { desc = 'Move Selected Lines Upwards' })
+map('n', '<leader>pv', vim.cmd.Ex, 'Ex')
 
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'No Idea' })
+map('v', 'J', ':m \'>+1<CR>gv=gv', 'Move Selected Lines Downwards')
+map('v', 'K', ':m \'<-2<CR>gv=gv', 'Move Selected Lines Upwards')
 
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump Half Page [D]ownwards' })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump Half Page [U]pwards' })
-vim.keymap.set('n', '<leader>vs', vim.cmd.vsplit, { desc = 'Split screen Vertically' })
-vim.keymap.set('n', '<leader>hs', vim.cmd.split, { desc = 'Split screen Horizontally' })
+map('n', '<C-d>', '<C-d>zz', 'Jump Half Page [D]ownwards')
+map('n', '<C-u>', '<C-u>zz', 'Jump Half Page [U]pwards')
 
-vim.keymap.set('n', '<A-t>', vim.cmd.tabnew, { desc = 'Create new Tab' })
-vim.keymap.set('n', '<A-n>', vim.cmd.tabnext, { desc = 'Jump to next Tab' })
-vim.keymap.set('n', '<A-p>', vim.cmd.tabprevious, { desc = 'Jump to previous Tab' })
+map('n', '<leader>vs', vim.cmd.vsplit, 'Split screen Vertically')
+map('n', '<leader>hs', vim.cmd.split, 'Split screen Horizontally')
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y]ank to System Clipboard' })
-vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y]ank to System Clipboard' })
+map('n', '<A-t>', vim.cmd.tabnew, 'Create new Tab')
+map('n', '<A-n>', vim.cmd.tabnext, 'Jump to next Tab')
+map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>dg', vim.diagnostic.setqflist, { desc = '[D]ia[G]nostics' })
-vim.keymap.set('n', '<leader>tsp', '<cmd>:InspectTree<cr>', { desc = '[D]ia[G]nostics' })
---stylua: ignore end
+map({ 'n', 'v' }, '<leader>y', [["+y]], '[Y]ank to System Clipboard')
+map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
+
+map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', '[D]ia[G]nostics')
+
+map('n', '[d', vim.diagnostic.goto_next, 'Next Diagnostic message')
+map('n', ']d', vim.diagnostic.goto_prev, 'Previous Diagnostic message')
+map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
+map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
