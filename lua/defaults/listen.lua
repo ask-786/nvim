@@ -31,6 +31,6 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
-	group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+	group = vim.api.nvim_create_augroup('ask-lsp-attach', { clear = true }),
 	callback = helpers.lsp_attach_callback,
 })
