@@ -2,10 +2,16 @@ vim.g.mapleader = ' '
 
 ---@param mode string | table
 ---@param map string
----@param command string
+---@param command string | function
 ---@param desc string
 local map = function(mode, map, command, desc)
 	vim.keymap.set(mode, map, command, { desc = desc })
+end
+
+local function diagnostic_jump(count)
+	return function()
+		vim.diagnostic.jump({ count = count })
+	end
 end
 
 map('n', '<leader>pv', vim.cmd.Ex, 'Ex')
@@ -28,7 +34,7 @@ map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
 
 map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', '[D]ia[G]nostics')
 
-map('n', '[d', vim.diagnostic.goto_next, 'Next Diagnostic message')
-map('n', ']d', vim.diagnostic.goto_prev, 'Previous Diagnostic message')
+map('n', '[d', diagnostic_jump(1), 'Next Diagnostic message')
+map('n', ']d', diagnostic_jump(-1), 'Previous Diagnostic message')
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')

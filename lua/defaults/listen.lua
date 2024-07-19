@@ -20,16 +20,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
-	group = vim.api.nvim_create_augroup('set-angular-filetype', { clear = true }),
-	pattern = '*.component.html',
-	callback = function()
-		-- Necessary for angular lsp to get attached.
-		vim.cmd([[set filetype=html]])
-		vim.cmd([[set filetype=angular.html]])
-	end,
-})
-
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('ask-lsp-attach', { clear = true }),
 	callback = helpers.lsp_attach_callback,
