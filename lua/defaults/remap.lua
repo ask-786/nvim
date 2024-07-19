@@ -8,9 +8,19 @@ local map = function(mode, map, command, desc)
 	vim.keymap.set(mode, map, command, { desc = desc })
 end
 
-local function diagnostic_jump(count)
+---@param count integer
+---@param error_only? boolean
+---@return function
+local function diagnostic_jump(count, error_only)
 	return function()
-		vim.diagnostic.jump({ count = count })
+		if error_only == true then
+			vim.diagnostic.jump({
+				count = count,
+				severity = vim.diagnostic.severity.ERROR,
+			})
+		else
+			vim.diagnostic.jump({ count = count })
+		end
 	end
 end
 
@@ -35,6 +45,9 @@ map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
 map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', '[D]ia[G]nostics')
 
 map('n', '[d', diagnostic_jump(1), 'Next Diagnostic message')
-map('n', ']d', diagnostic_jump(-1), 'Previous Diagnostic message')
+map('n', ']d', diagnostic_jump(-1), 'Prev Diagnostic message')
+map('n', '[ed', diagnostic_jump(1, true), 'Next Diagnostic Error')
+map('n', ']ed', diagnostic_jump(-1, true), 'Prev Diagnostic Error')
+
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
