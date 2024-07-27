@@ -3,7 +3,7 @@ return {
 	{ 'nvim-tree/nvim-web-devicons' },
 	{
 		'windwp/nvim-autopairs',
-		event = 'BufEnter',
+		event = 'InsertEnter',
 		config = function()
 			require('nvim-autopairs').setup({})
 		end,

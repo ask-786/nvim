@@ -24,6 +24,7 @@ local function diagnostic_jump(count, error_only)
 	end
 end
 
+--stylua: ignore start
 map('n', '<leader>pv', vim.cmd.Ex, 'Ex')
 
 map('v', 'J', ':m \'>+1<CR>gv=gv', 'Move Selected Lines Downwards')
@@ -35,7 +36,7 @@ map('n', '<C-u>', '<C-u>zz', 'Jump Half Page [U]pwards')
 map('n', '<leader>vs', vim.cmd.vsplit, 'Split screen Vertically')
 map('n', '<leader>hs', vim.cmd.split, 'Split screen Horizontally')
 
-map('n', '<A-t>', vim.cmd.tabnew, 'Create new Tab')
+map('n', '<A-t>', function() vim.cmd.tabnew('.') end, 'Create new Tab')
 map('n', '<A-n>', vim.cmd.tabnext, 'Jump to next Tab')
 map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 
@@ -51,3 +52,4 @@ map('n', ']ed', diagnostic_jump(-1, true), 'Prev Diagnostic Error')
 
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
+--stylua: ignore end

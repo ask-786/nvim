@@ -22,5 +22,5 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('ask-lsp-attach', { clear = true }),
-	callback = helpers.lsp_attach_callback,
+	callback = helpers.lsp_highlight,
 })

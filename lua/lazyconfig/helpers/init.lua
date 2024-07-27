@@ -35,7 +35,7 @@ local function on_attach(_, bufnr)
 	end, '[F]ormat [F]ile')
 end
 
-M.lsp_attach_callback = function(event)
+M.lsp_highlight = function(event)
 	-- When you move your cursor, the highlights will be cleared (the second autocommand).
 	local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -80,38 +80,6 @@ M.lsp_config = function()
 
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
-		init_options = {
-			onlyAnalyzeProjectsWithOpenFiles = false,
-		},
-		settings = {
-			dart = {
-				analysisExcludedFolders = {
-					vim.fn.expand('$HOME/AppData/Local/Pub/Cache'),
-					vim.fn.expand('$HOME/.pub-cache/'),
-					vim.fn.expand('$HOME/dev/flutter/'),
-				},
-				updateImportsOnRename = true,
-			},
-		},
-	})
-
-	lsp_config.gopls.setup({
-		on_attach = on_attach,
-		cmd = { 'gopls' },
-		filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-		root_dir = lsp_config.util.root_pattern('go.work', 'go.mod', '.git'),
-		settings = {
-			gopls = {
-				completeUnimported = true,
-				usePlaceholders = true,
-				analyses = { unusedparams = true },
-			},
-		},
-	})
-
-	lsp_config.rust_analyzer.setup({
-		on_attach = on_attach,
-		cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 	})
 
 	lsp_config.lua_ls.setup({
@@ -133,8 +101,6 @@ M.lsp_config = function()
 		},
 	})
 
-	lsp_config.quick_lint_js.setup({})
-
 	lsp_config.tsserver.setup({
 		on_attach = on_attach,
 		settings = {
@@ -146,10 +112,6 @@ M.lsp_config = function()
 			},
 		},
 	})
-
-	lsp_config.pyright.setup({
-		on_attach = on_attach,
-	})
 end
 
 M.mason_lsp_config = function()
@@ -159,6 +121,14 @@ M.mason_lsp_config = function()
 	require('mason-lspconfig').setup({
 		ensure_installed = { 'tsserver', 'lua_ls' },
 		handlers = { lsp_zero.default_setup },
+	})
+
+	lsp_zero.configure('angularls', {
+		settings = {
+			angular = {
+				forceStrictTemplates = true,
+			},
+		},
 	})
 end
 
