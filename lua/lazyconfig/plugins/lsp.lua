@@ -30,9 +30,7 @@ return {
 		dependencies = {
 			'VonHeikemen/lsp-zero.nvim',
 			'williamboman/mason.nvim',
-			'neovim/nvim-lspconfig',
 		},
-		config = helpers.mason_lsp_config,
 	},
 	{
 		'williamboman/mason.nvim',

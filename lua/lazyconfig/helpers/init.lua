@@ -72,14 +72,19 @@ end
 
 M.lsp_config = function()
 	local lsp_zero = require('lsp-zero')
+	local lsp_config = require('lspconfig')
+	local mason_lsp_config = require('mason-lspconfig')
+
 	lsp_zero.extend_lspconfig()
 	lsp_zero.on_attach(on_attach)
 
-	local lsp_config = require('lspconfig')
-	require('lspconfig.ui.windows').default_options.border = 'rounded'
-
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
+	})
+
+	mason_lsp_config.setup({
+		ensure_installed = { 'tsserver', 'lua_ls' },
+		handlers = { lsp_zero.default_setup },
 	})
 
 	lsp_config.lua_ls.setup({
@@ -88,7 +93,7 @@ M.lsp_config = function()
 			Lua = {
 				runtime = { version = 'LuaJIT' },
 				workspace = {
-					checkThirdParty = false,
+					checkThirdParty = true,
 					library = {
 						'${3rd}/luv/library',
 						unpack(vim.api.nvim_get_runtime_file('', true)),
@@ -101,6 +106,15 @@ M.lsp_config = function()
 		},
 	})
 
+	lsp_config.angularls.setup({
+		on_attach = on_attach,
+		settings = {
+			angular = {
+				forceStrictTemplates = true,
+			},
+		},
+	})
+
 	lsp_config.tsserver.setup({
 		on_attach = on_attach,
 		settings = {
@@ -109,24 +123,6 @@ M.lsp_config = function()
 			},
 			implicitProjectConfiguration = {
 				checkJs = true,
-			},
-		},
-	})
-end
-
-M.mason_lsp_config = function()
-	local lsp_zero = require('lsp-zero')
-	lsp_zero.extend_lspconfig()
-
-	require('mason-lspconfig').setup({
-		ensure_installed = { 'tsserver', 'lua_ls' },
-		handlers = { lsp_zero.default_setup },
-	})
-
-	lsp_zero.configure('angularls', {
-		settings = {
-			angular = {
-				forceStrictTemplates = true,
 			},
 		},
 	})
