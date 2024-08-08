@@ -78,13 +78,13 @@ M.lsp_config = function()
 	lsp_zero.extend_lspconfig()
 	lsp_zero.on_attach(on_attach)
 
-	lsp_config.dartls.setup({
-		on_attach = on_attach,
-	})
-
 	mason_lsp_config.setup({
 		ensure_installed = { 'tsserver', 'lua_ls' },
 		handlers = { lsp_zero.default_setup },
+	})
+
+	lsp_config.dartls.setup({
+		on_attach = on_attach,
 	})
 
 	lsp_config.lua_ls.setup({
