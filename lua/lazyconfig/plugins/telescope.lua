@@ -22,9 +22,9 @@ local config = function()
 	vim.keymap.set('n', '<leader>pa', builtin.oldfiles, { desc = '[P]roject Old Files' })
 	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[P]roject [R]eferences' })
 	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, { desc = '[P]roject Diagnostics' })
-	vim.keymap.set('n', '<leader>pt', builtin.resume, { desc = '[P]roject [T]elescope' })
+	vim.keymap.set('n', '<leader>pt', builtin.resume, { desc = '[P]roject Recent [T]elescope' })
 	vim.keymap.set('n', '<leader>ps', grep_func(), { desc = '[P]roject [S]earch' })
-	vim.keymap.set('n', '<leader>pc', grep_func(true), { desc = '[P]roject [S]earch' })
+	vim.keymap.set('n', '<leader>pc', grep_func(true), { desc = '[P]roject Search [C]urrent' })
 	vim.keymap.set('n', '<C-g>', builtin.git_files, { desc = 'Git Files' })
 	--stylua: ignore end
 
