@@ -2,8 +2,18 @@ local config = function()
 	local builtin = require('telescope.builtin')
 	local telescope = require('telescope')
 
-	local grep_func = function()
-		builtin.grep_string({ search = vim.fn.input('Grep > ') })
+	---@param current? boolean
+	---@return function
+	local grep_func = function(current)
+		return function()
+			local search_string = vim.fn.expand('<cword>')
+
+			if not current then
+				search_string = vim.fn.input('Grep > ')
+			end
+
+			builtin.grep_string({ search = search_string })
+		end
 	end
 
 	--stylua: ignore start
@@ -13,7 +23,8 @@ local config = function()
 	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[P]roject [R]eferences' })
 	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, { desc = '[P]roject Diagnostics' })
 	vim.keymap.set('n', '<leader>pt', builtin.resume, { desc = '[P]roject [T]elescope' })
-	vim.keymap.set('n', '<leader>ps', grep_func, { desc = '[P]roject [S]earch' })
+	vim.keymap.set('n', '<leader>ps', grep_func(), { desc = '[P]roject [S]earch' })
+	vim.keymap.set('n', '<leader>pc', grep_func(true), { desc = '[P]roject [S]earch' })
 	vim.keymap.set('n', '<C-g>', builtin.git_files, { desc = 'Git Files' })
 	--stylua: ignore end
 

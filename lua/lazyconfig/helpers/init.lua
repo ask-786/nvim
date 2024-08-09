@@ -93,7 +93,7 @@ M.lsp_config = function()
 			Lua = {
 				runtime = { version = 'LuaJIT' },
 				workspace = {
-					checkThirdParty = true,
+					checkThirdParty = false,
 					library = {
 						'${3rd}/luv/library',
 						unpack(vim.api.nvim_get_runtime_file('', true)),
@@ -111,6 +111,10 @@ M.lsp_config = function()
 		settings = {
 			angular = {
 				forceStrictTemplates = true,
+				suggest = {
+					includeAutomaticOptionalChainCompletions = true,
+					includeCompletionsWithSnippetText = true,
+				},
 			},
 		},
 	})
