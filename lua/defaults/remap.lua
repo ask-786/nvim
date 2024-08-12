@@ -1,12 +1,5 @@
+local map = require('lazyconfig.helpers').map_with_desc
 vim.g.mapleader = ' '
-
----@param mode string | table
----@param map string
----@param command string | function
----@param desc string
-local map = function(mode, map, command, desc)
-	vim.keymap.set(mode, map, command, { desc = desc })
-end
 
 ---@param count integer
 ---@param error_only? boolean

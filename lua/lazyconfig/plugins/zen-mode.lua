@@ -1,5 +1,7 @@
+local map = require('lazyconfig.helpers').map_with_desc
+
 local config = function()
-	vim.keymap.set('n', '<leader>zz', function()
+	map('n', '<leader>zz', function()
 		local zm = require('zen-mode')
 
 		zm.setup({
@@ -13,7 +15,7 @@ local config = function()
 		vim.wo.wrap = false
 		vim.wo.number = true
 		vim.wo.rnu = true
-	end, { desc = 'Zen Mode' })
+	end, 'Zen Mode')
 end
 
 return {

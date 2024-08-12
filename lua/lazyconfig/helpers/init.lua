@@ -6,11 +6,28 @@ local function allow_format(servers)
 	end
 end
 
+---@param mode string | table
+---@param lhs string
+---@param rhs function | string
+---@param desc string
+---@param extra_opts? table
+M.map_with_desc = function(mode, lhs, rhs, desc, extra_opts)
+	local opts = { desc = desc }
+
+	if extra_opts then
+		for key, value in pairs(extra_opts) do
+			opts[key] = value
+		end
+	end
+
+	vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 ---On Attach Function For LSPs
 local function on_attach(_, bufnr)
 	local map = function(mode, keys, action, desc)
-		local opts = { buffer = bufnr, remap = false, desc = desc }
-		vim.keymap.set(mode, keys, action, opts)
+		local opts = { buffer = bufnr, remap = false }
+		M.map_with_desc(mode, keys, action, desc, opts)
 	end
 
 	map('n', 'gd', vim.lsp.buf.definition, '[G]o to [D]efinition')

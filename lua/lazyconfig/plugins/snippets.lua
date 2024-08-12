@@ -1,16 +1,4 @@
----Keymap func
----@param mode string | table
----@param lhs string
----@param rhs string | function
----@param desc string
-local function map(mode, lhs, rhs, desc)
-	local opts = {}
-
-	opts.desc = desc
-	opts.silent = true
-
-	vim.keymap.set(mode, lhs, rhs, opts)
-end
+local map = require('lazyconfig.helpers').map_with_desc
 
 ---Luasnip jump
 ---@param ls table
@@ -32,15 +20,15 @@ local luasnip_config = function(opts)
 		require('luasnip').config.setup(opts)
 	end
 
-	--stylua: ignore start
-	map({ 'i' }, '<C-K>', ls.expand, 'LuaSnip Expand' )
-	map({ 'i', 's' }, '<C-L>', jump(ls, true),'LuaSnip Jump Forward' )
-	map({ 'i', 's' }, '<C-H>', jump(ls) , 'LuaSnip Jump Backward' )
-	--stylua: ignore end
+	local extra_opts = { silent = true }
+
+	map({ 'i' }, '<C-K>', ls.expand, 'LuaSnip Expand', extra_opts)
+	map({ 'i', 's' }, '<C-L>', jump(ls, true), 'LuaSnip Jump Forward', extra_opts)
+	map({ 'i', 's' }, '<C-H>', jump(ls), 'LuaSnip Jump Backward', extra_opts)
 
 	ls.filetype_extend('typescript', { 'tsdoc' })
 	ls.filetype_extend('javascript', { 'jsdoc' })
-	ls.filetype_extend('htmlangular', { 'html' })
+	ls.filetype_extend('htmlangular', { 'angular' })
 end
 
 local function friendly_snippets_config()

@@ -1,22 +1,24 @@
+local map = require('lazyconfig.helpers').map_with_desc
+
 local config = function()
 	local harpoon = require('harpoon')
 
 	harpoon:setup()
 
-	vim.keymap.set('n', '<leader>a', function()
+	map('n', '<leader>a', function()
 		harpoon:list():add()
-	end, { desc = '[A]dd file (harpoon)' })
+	end, '[A]dd file (harpoon)')
 
-	vim.keymap.set('n', '<C-e>', function()
+	map('n', '<C-e>', function()
 		harpoon.ui:toggle_quick_menu(harpoon:list())
-	end, { desc = 'Toggle quickmenu (harpoon)' })
+	end, 'Toggle quickmenu (harpoon)')
 
 	local keys = { 'h', 'j', 'k', 'l' }
 
 	for i, value in ipairs(keys) do
-		vim.keymap.set('n', '<A-' .. value .. '>', function()
+		map('n', '<A-' .. value .. '>', function()
 			harpoon:list():select(i)
-		end, { desc = 'File ' .. i .. ' (harpoon)' })
+		end, 'File ' .. i .. ' (harpoon)')
 	end
 end
 

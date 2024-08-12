@@ -1,11 +1,10 @@
+local map_with_desc = require('lazyconfig.helpers').map_with_desc
+
 local on_attach = function(bufnr)
 	local gs = package.loaded.gitsigns
 
 	local function map(mode, l, r, desc)
-		local opts = {}
-		opts.buffer = bufnr
-		opts.desc = 'Gitsigns ' .. desc
-		vim.keymap.set(mode, l, r, opts)
+		map_with_desc(mode, l, r, 'Gitsigns ' .. desc, { buffer = bufnr })
 	end
 
 	map('n', '<leader>g[', function()

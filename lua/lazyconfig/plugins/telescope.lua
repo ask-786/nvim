@@ -1,3 +1,5 @@
+local map = require('lazyconfig.helpers').map_with_desc
+
 local config = function()
 	local builtin = require('telescope.builtin')
 	local telescope = require('telescope')
@@ -17,15 +19,15 @@ local config = function()
 	end
 
 	--stylua: ignore start
-	vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[P]roject [F]iles' })
-	vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = '[P]roject [G]rep' })
-	vim.keymap.set('n', '<leader>pa', builtin.oldfiles, { desc = '[P]roject Old Files' })
-	vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[P]roject [R]eferences' })
-	vim.keymap.set('n', '<leader>pe', builtin.diagnostics, { desc = '[P]roject Diagnostics' })
-	vim.keymap.set('n', '<leader>pt', builtin.resume, { desc = '[P]roject Recent [T]elescope' })
-	vim.keymap.set('n', '<leader>ps', grep_func(), { desc = '[P]roject [S]earch' })
-	vim.keymap.set('n', '<leader>pc', grep_func(true), { desc = '[P]roject Search [C]urrent' })
-	vim.keymap.set('n', '<C-g>', builtin.git_files, { desc = 'Git Files' })
+	map('n', '<leader>pf', builtin.find_files,  '[P]roject [F]iles' )
+	map('n', '<leader>pg', builtin.live_grep,  '[P]roject [G]rep' )
+	map('n', '<leader>pa', builtin.oldfiles,  '[P]roject Old Files' )
+	map('n', '<leader>pr', builtin.lsp_references,  '[P]roject [R]eferences' )
+	map('n', '<leader>pe', builtin.diagnostics,  '[P]roject Diagnostics' )
+	map('n', '<leader>pt', builtin.resume,  '[P]roject Recent [T]elescope' )
+	map('n', '<leader>ps', grep_func(),  '[P]roject [S]earch' )
+	map('n', '<leader>pc', grep_func(true),  '[P]roject Search [C]urrent' )
+	map('n', '<C-g>', builtin.git_files,  'Git Files' )
 	--stylua: ignore end
 
 	telescope.setup({
