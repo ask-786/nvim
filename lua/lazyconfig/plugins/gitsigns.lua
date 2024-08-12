@@ -38,8 +38,9 @@ local on_attach = function(bufnr)
 	-- stylua: ignore end
 end
 
-local config = function()
-	require('gitsigns').setup({
+return {
+	'lewis6991/gitsigns.nvim',
+	opts = {
 		on_attach = on_attach,
 		current_line_blame = true,
 		current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
@@ -50,10 +51,5 @@ local config = function()
 			row = 0,
 			col = 1,
 		},
-	})
-end
-
-return {
-	'lewis6991/gitsigns.nvim',
-	config = config,
+	},
 }

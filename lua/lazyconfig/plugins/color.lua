@@ -1,5 +1,12 @@
-local config = function()
-	require('catppuccin').setup({
+return {
+	'catppuccin/nvim',
+	name = 'catppuccin',
+	lazy = false,
+	priority = 1000,
+	cmd = function()
+		vim.cmd.colorscheme('catppuccin')
+	end,
+	opts = {
 		flavour = 'mocha', -- latte, frappe, macchiato, mocha
 		transparent_background = true, -- disables setting the background color.tree
 		custom_highlights = function(colors)
@@ -17,16 +24,5 @@ local config = function()
 				indentscope_color = '',
 			},
 		},
-	})
-end
-
-return {
-	'catppuccin/nvim',
-	name = 'catppuccin',
-	lazy = false,
-	priority = 1000,
-	cmd = function()
-		vim.cmd.colorscheme('catppuccin')
-	end,
-	config = config,
+	},
 }

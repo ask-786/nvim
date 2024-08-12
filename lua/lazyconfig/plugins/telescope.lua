@@ -73,10 +73,18 @@ local config = function()
 end
 
 return {
-	'nvim-telescope/telescope.nvim',
-	dependencies = {
-		'nvim-lua/plenary.nvim',
-		'nvim-tree/nvim-web-devicons',
+	{
+		'nvim-telescope/telescope.nvim',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-tree/nvim-web-devicons',
+			'nvim-telescope/telescope-ui-select.nvim',
+			'nvim-telescope/telescope-fzf-native.nvim',
+		},
+		config = config,
 	},
-	config = config,
+	{
+		'nvim-telescope/telescope-fzf-native.nvim',
+		build = 'make',
+	},
 }

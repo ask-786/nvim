@@ -1,6 +1,5 @@
 local config = function()
-	local lsp_zero = require('lsp-zero')
-	lsp_zero.extend_cmp()
+	require('lsp-zero').extend_cmp()
 
 	local cmp = require('cmp')
 	cmp.setup({
@@ -40,6 +39,7 @@ local config = function()
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
 			{ name = 'luasnip' },
+			{ name = 'cmp-tw2css' },
 			{ name = 'path' },
 		}, {
 			{ name = 'buffer' },
@@ -56,6 +56,7 @@ return {
 		'hrsh7th/cmp-path',
 		'saadparwaiz1/cmp_luasnip',
 		'VonHeikemen/lsp-zero.nvim',
+		'jcha0713/cmp-tw2css',
 	},
 	config = config,
 }
