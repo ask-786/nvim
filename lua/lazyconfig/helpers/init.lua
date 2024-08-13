@@ -1,11 +1,5 @@
 local M = {}
 
-local function allow_format(servers)
-	return function(client)
-		return vim.tbl_contains(servers, client.name)
-	end
-end
-
 ---@param mode string | table
 ---@param lhs string
 ---@param rhs function | string
@@ -38,16 +32,12 @@ local function on_attach(_, bufnr)
 	map('i', '<C-a>', vim.lsp.buf.signature_help, 'Signature Help')
 	map({ 'n', 'x' }, '<leader>ff', function()
 		vim.lsp.buf.format({
+			bufnr = bufnr,
 			async = false,
-			timeout_ms = 10000,
-			filter = allow_format({
-				'rust_analyzer',
-				'null-ls',
-				'dartls',
-				'gopls',
-				'clangd',
-				'jsonls',
-			}),
+			timeout_ms = 2000,
+			filter = function(c)
+				return c.name ~= 'tsserver'
+			end,
 		})
 	end, '[F]ormat [F]ile')
 end
@@ -61,7 +51,7 @@ M.lsp_highlight = function(event)
 	end
 
 	local highlight_augroup =
-		vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
+			vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
 
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		buffer = event.buf,
