@@ -37,7 +37,7 @@ local config = function()
 				search_string = get_visual_selection_text()
 			end
 
-			if search_string then
+			if not search_string then
 				vim.notify('Can\'t search nil value')
 				return
 			end
