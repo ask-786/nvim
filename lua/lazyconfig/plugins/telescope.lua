@@ -18,17 +18,15 @@ local config = function()
 		end
 	end
 
-	--stylua: ignore start
-	map('n', '<leader>pf', builtin.find_files,  '[P]roject [F]iles' )
-	map('n', '<leader>pg', builtin.live_grep,  '[P]roject [G]rep' )
-	map('n', '<leader>pa', builtin.oldfiles,  '[P]roject Old Files' )
-	map('n', '<leader>pr', builtin.lsp_references,  '[P]roject [R]eferences' )
-	map('n', '<leader>pe', builtin.diagnostics,  '[P]roject Diagnostics' )
-	map('n', '<leader>pt', builtin.resume,  '[P]roject Recent [T]elescope' )
-	map('n', '<leader>ps', grep_func(),  '[P]roject [S]earch' )
-	map('n', '<leader>pc', grep_func(true),  '[P]roject Search [C]urrent' )
-	map('n', '<C-g>', builtin.git_files,  'Git Files' )
-	--stylua: ignore end
+	map('n', '<leader>pf', builtin.find_files, '[P]roject [F]iles')
+	map('n', '<leader>pg', builtin.live_grep, '[P]roject [G]rep')
+	map('n', '<leader>pa', builtin.oldfiles, '[P]roject Old Files')
+	map('n', '<leader>pr', builtin.lsp_references, '[P]roject [R]eferences')
+	map('n', '<leader>pe', builtin.diagnostics, '[P]roject Diagnostics')
+	map('n', '<leader>pt', builtin.resume, '[P]roject Recent [T]elescope')
+	map('n', '<leader>ps', grep_func(), '[P]roject [S]earch')
+	map('n', '<leader>pc', grep_func(true), '[P]roject Search [C]urrent')
+	map('n', '<C-g>', builtin.git_files, 'Git Files')
 
 	telescope.setup({
 		extensions = {

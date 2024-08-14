@@ -1,5 +1,14 @@
 local M = {}
 
+---@param servers table<string>
+---@return function
+local function filter_without(servers)
+	return function(client)
+		return client.supports_method('textDocument/formatting')
+			and not vim.tbl_contains(servers, client.name)
+	end
+end
+
 ---@param mode string | table
 ---@param lhs string
 ---@param rhs function | string
@@ -34,10 +43,8 @@ local function on_attach(_, bufnr)
 		vim.lsp.buf.format({
 			bufnr = bufnr,
 			async = false,
-			timeout_ms = 2000,
-			filter = function(c)
-				return c.name ~= 'tsserver'
-			end,
+			timeout_ms = 5000,
+			filter = filter_without({ 'tsserver', 'lua_ls' }),
 		})
 	end, '[F]ormat [F]ile')
 end
@@ -51,7 +58,7 @@ M.lsp_highlight = function(event)
 	end
 
 	local highlight_augroup =
-			vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
+		vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
 
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		buffer = event.buf,
@@ -81,6 +88,8 @@ M.lsp_config = function()
 	local lsp_zero = require('lsp-zero')
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
+
+	require('lspconfig.ui.windows').default_options.border = 'rounded'
 
 	lsp_zero.extend_lspconfig()
 	lsp_zero.on_attach(on_attach)
