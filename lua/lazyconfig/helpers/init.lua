@@ -1,7 +1,7 @@
 local M = {}
 
 ---@param servers table<string>
----@return function
+---@return fun(client: vim.lsp.Client):boolean?
 local function filter_without(servers)
 	return function(client)
 		return client.supports_method('textDocument/formatting')

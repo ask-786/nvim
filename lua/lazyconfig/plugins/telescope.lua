@@ -1,17 +1,45 @@
 local map = require('lazyconfig.helpers').map_with_desc
 
+local get_visual_selection_text = function()
+	local _, srow, scol = unpack(vim.fn.getpos('v'))
+	local _, erow, ecol = unpack(vim.fn.getpos('.'))
+
+	local string
+	if srow < erow or (srow == erow and scol <= ecol) then
+		string =
+			vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {})
+	else
+		string =
+			vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {})
+	end
+	return table.concat(string)
+end
+
 local config = function()
 	local builtin = require('telescope.builtin')
 	local telescope = require('telescope')
 
-	---@param current? boolean
+	---@param mode 'g' | 'n' | 'v'
 	---@return function
-	local grep_func = function(current)
+	local grep_func = function(mode)
 		return function()
-			local search_string = vim.fn.expand('<cword>')
+			local search_string
 
-			if not current then
+			if mode == 'n' then
+				search_string = vim.fn.expand('<cword>')
+			end
+
+			if mode == 'g' then
 				search_string = vim.fn.input('Grep > ')
+			end
+
+			if mode == 'v' then
+				search_string = get_visual_selection_text()
+			end
+
+			if search_string then
+				vim.notify('Can\'t search nil value')
+				return
 			end
 
 			builtin.grep_string({ search = search_string })
@@ -24,8 +52,9 @@ local config = function()
 	map('n', '<leader>pr', builtin.lsp_references, '[P]roject [R]eferences')
 	map('n', '<leader>pe', builtin.diagnostics, '[P]roject Diagnostics')
 	map('n', '<leader>pt', builtin.resume, '[P]roject Recent [T]elescope')
-	map('n', '<leader>ps', grep_func(), '[P]roject [S]earch')
-	map('n', '<leader>pc', grep_func(true), '[P]roject Search [C]urrent')
+	map('n', '<leader>ps', grep_func('g'), '[P]roject [S]earch')
+	map('n', '<leader>pc', grep_func('n'), '[P]roject Search [C]urrent')
+	map('v', '<leader>pc', grep_func('v'), '[P]roject Search [C]urrent')
 	map('n', '<C-g>', builtin.git_files, 'Git Files')
 
 	telescope.setup({
