@@ -4,15 +4,25 @@ local get_visual_selection_text = function()
 	local _, srow, scol = unpack(vim.fn.getpos('v'))
 	local _, erow, ecol = unpack(vim.fn.getpos('.'))
 
-	local string
-	if srow < erow or (srow == erow and scol <= ecol) then
-		string =
-			vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {})
-	else
-		string =
-			vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {})
+	-- stylua: ignore start
+	-- Visual line mode
+	if vim.fn.mode() == 'V' then
+		if srow > erow then
+			return table.concat(vim.api.nvim_buf_get_lines(0, erow - 1, srow, true), '\n')
+		end
+
+		return table.concat(vim.api.nvim_buf_get_lines(0, srow - 1, erow, true), '\n')
 	end
-	return table.concat(string)
+
+	-- Regular visual mode
+	if vim.fn.mode() == 'v' then
+		if srow < erow or (srow == erow and scol <= ecol) then
+			return table.concat(vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {}), '\n')
+		end
+
+		return table.concat(vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {}), '\n')
+	end
+	-- stylua: ignore end
 end
 
 local config = function()
