@@ -20,7 +20,7 @@ local config = function()
 	local telescope = require('telescope')
 
 	---@param mode 'g' | 'n' | 'v'
-	---@return function
+	---@return fun():nil
 	local grep_func = function(mode)
 		return function()
 			local search_string

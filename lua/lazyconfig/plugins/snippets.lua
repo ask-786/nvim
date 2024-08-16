@@ -28,7 +28,7 @@ local luasnip_config = function(opts)
 
 	ls.filetype_extend('typescript', { 'tsdoc' })
 	ls.filetype_extend('javascript', { 'jsdoc' })
-	ls.filetype_extend('htmlangular', { 'angular' })
+	ls.filetype_extend('htmlangular', { 'html', 'angular' })
 end
 
 local function friendly_snippets_config()
