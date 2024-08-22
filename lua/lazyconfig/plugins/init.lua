@@ -13,8 +13,9 @@ return {
 	},
 	{ 'tpope/vim-sleuth' },
 	{
-		'echasnovski/mini.surround',
-		version = false,
+		'kylechui/nvim-surround',
+		version = '*',
+		event = 'VeryLazy',
 		opts = {},
 	},
 }

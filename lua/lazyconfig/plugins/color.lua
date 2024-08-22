@@ -19,10 +19,6 @@ return {
 			harpoon = true,
 			mason = true,
 			fidget = true,
-			mini = {
-				enabled = true,
-				indentscope_color = '',
-			},
 		},
 	},
 }
