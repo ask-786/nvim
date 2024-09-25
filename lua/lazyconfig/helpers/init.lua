@@ -44,7 +44,7 @@ local function on_attach(_, bufnr)
 			bufnr = bufnr,
 			async = false,
 			timeout_ms = 5000,
-			filter = filter_without({ 'tsserver', 'lua_ls' }),
+			filter = filter_without({ 'ts_ls', 'lua_ls' }),
 		})
 	end, '[F]ormat [F]ile')
 end
@@ -95,7 +95,7 @@ M.lsp_config = function()
 	lsp_zero.on_attach(on_attach)
 
 	mason_lsp_config.setup({
-		ensure_installed = { 'tsserver', 'lua_ls' },
+		ensure_installed = { 'ts_ls', 'lua_ls' },
 		handlers = { lsp_zero.default_setup },
 	})
 
@@ -135,7 +135,7 @@ M.lsp_config = function()
 		},
 	})
 
-	lsp_config.tsserver.setup({
+	lsp_config.ts_ls.setup({
 		on_attach = on_attach,
 		settings = {
 			completions = {
