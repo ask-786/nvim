@@ -7,8 +7,8 @@ return {
 		vim.cmd.colorscheme('catppuccin')
 	end,
 	opts = {
-		flavour = 'mocha', -- latte, frappe, macchiato, mocha
-		transparent_background = true, -- disables setting the background color.tree
+		flavour = 'mocha',
+		transparent_background = true,
 		custom_highlights = function(colors)
 			return {
 				CursorLine = { bg = colors.mantle },
