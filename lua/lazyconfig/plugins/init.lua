@@ -7,7 +7,7 @@ return {
 		opts = {},
 	},
 	{
-		'numToStr/Comment.nvim',
+		'ask-786/Comment.nvim',
 		event = 'BufEnter',
 		opts = {},
 	},

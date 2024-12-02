@@ -154,7 +154,7 @@ M.null_ls_config = function()
 	null_ls.setup({
 		on_attach = on_attach,
 		sources = {
-			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.formatting.prettier,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.stylua,
