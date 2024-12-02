@@ -4,8 +4,11 @@ local M = {}
 
 local function filter_without(servers, bufnr)
 	return function(client)
-		return (client.name == 'null-ls' or client.supports_method('textDocument/formatting', bufnr))
-				and not vim.tbl_contains(servers, client.name)
+		if vim.tbl_contains(servers, client.name) then return false end
+
+		if client.name == 'null-ls' then return true end
+
+		if client.supports_method('textDocument/formatting', bufnr) then return true end
 	end
 end
 
