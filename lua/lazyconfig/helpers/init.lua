@@ -1,11 +1,11 @@
+---@diagnostic disable: duplicate-set-field
+
 local M = {}
 
----@param servers table<string>
----@return fun(client: vim.lsp.Client):boolean?
-local function filter_without(servers)
+local function filter_without(servers, bufnr)
 	return function(client)
-		return client.supports_method('textDocument/formatting')
-			and not vim.tbl_contains(servers, client.name)
+		return client.supports_method('textDocument/formatting', bufnr)
+				and not vim.tbl_contains(servers, client.name)
 	end
 end
 
@@ -44,7 +44,7 @@ local function on_attach(_, bufnr)
 			bufnr = bufnr,
 			async = false,
 			timeout_ms = 5000,
-			filter = filter_without({ 'ts_ls', 'lua_ls' }),
+			filter = filter_without({ 'ts_ls' }, bufnr),
 		})
 	end, '[F]ormat [F]ile')
 end
@@ -58,7 +58,7 @@ M.lsp_highlight = function(event)
 	end
 
 	local highlight_augroup =
-		vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
+			vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
 
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		buffer = event.buf,
@@ -89,7 +89,13 @@ M.lsp_config = function()
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
 
-	require('lspconfig.ui.windows').default_options.border = 'rounded'
+	local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+
+	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+		opts = opts or {}
+		opts.border = opts.border or 'rounded'
+		return orig_util_open_floating_preview(contents, syntax, opts, ...)
+	end
 
 	lsp_zero.extend_lspconfig()
 	lsp_zero.on_attach(on_attach)
@@ -157,7 +163,6 @@ M.null_ls_config = function()
 			null_ls.builtins.formatting.prettier,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.shfmt,
-			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.google_java_format,
 			null_ls.builtins.formatting.pretty_php,
 		},
