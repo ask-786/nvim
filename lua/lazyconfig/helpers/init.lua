@@ -4,7 +4,7 @@ local M = {}
 
 local function filter_without(servers, bufnr)
 	return function(client)
-		return client.supports_method('textDocument/formatting', bufnr)
+		return (client.name == 'null-ls' or client.supports_method('textDocument/formatting', bufnr))
 				and not vim.tbl_contains(servers, client.name)
 	end
 end
@@ -89,12 +89,12 @@ M.lsp_config = function()
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
 
-	local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
 	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 		opts = opts or {}
 		opts.border = opts.border or 'rounded'
-		return orig_util_open_floating_preview(contents, syntax, opts, ...)
+		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
 	lsp_zero.extend_lspconfig()
