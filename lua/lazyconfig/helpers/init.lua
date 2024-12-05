@@ -116,6 +116,9 @@ M.lsp_config = function()
 		on_attach = on_attach,
 		settings = {
 			Lua = {
+				diagnostics = {
+					globals = { 'vim' }
+				},
 				runtime = { version = 'LuaJIT' },
 				workspace = {
 					checkThirdParty = false,
