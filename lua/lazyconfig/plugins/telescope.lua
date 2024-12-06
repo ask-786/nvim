@@ -4,7 +4,6 @@ local get_visual_selection_text = function()
 	local _, srow, scol = unpack(vim.fn.getpos('v'))
 	local _, erow, ecol = unpack(vim.fn.getpos('.'))
 
-	-- stylua: ignore start
 	-- Visual line mode
 	if vim.fn.mode() == 'V' then
 		if srow > erow then
@@ -22,7 +21,6 @@ local get_visual_selection_text = function()
 
 		return table.concat(vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {}), '\n')
 	end
-	-- stylua: ignore end
 end
 
 local config = function()

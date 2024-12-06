@@ -23,7 +23,6 @@ local on_attach = function(bufnr)
 		end
 	end, 'Prev Hunk')
 
-	-- stylua: ignore start
 	map('n', '<leader>gS', gs.stage_hunk, 'Stage Hunk')
 	map('n', '<leader>gu', gs.reset_hunk, 'Reset Hunk')
 	map('n', '<leader>gU', gs.undo_stage_hunk, 'Undo Stage')
@@ -34,7 +33,6 @@ local on_attach = function(bufnr)
 	map('v', '<leader>gu', function() gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, 'Reset Hunk')
 	map('n', '<leader>gb', function() gs.blame_line({ full = true }) end, 'Blame Line')
 	map('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff File')
-	-- stylua: ignore end
 end
 
 return {
