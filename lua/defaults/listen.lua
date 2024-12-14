@@ -1,4 +1,4 @@
-local helpers = require('lazyconfig.helpers')
+local util = require('lazyconfig.util')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
 	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
@@ -22,5 +22,5 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('ask-lsp-attach', { clear = true }),
-	callback = helpers.lsp_highlight,
+	callback = util.lsp_highlight,
 })

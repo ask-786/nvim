@@ -1,4 +1,4 @@
-local map_with_desc = require('lazyconfig.helpers').map_with_desc
+local map_with_desc = require('lazyconfig.util').map_with_desc
 
 local on_attach = function(bufnr)
 	local gs = package.loaded.gitsigns

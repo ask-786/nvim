@@ -88,9 +88,9 @@ M.lsp_highlight = function(event)
 end
 
 M.lsp_config = function()
-	local lsp_zero = require('lsp-zero')
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
+	local nvim_cmp_lsp = require('cmp_nvim_lsp')
 
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
@@ -100,12 +100,21 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
-	lsp_zero.extend_lspconfig()
-	lsp_zero.on_attach(on_attach)
+	local lspconfig_defaults = lsp_config.util.default_config
+	lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+		'force',
+		lspconfig_defaults.capabilities,
+		nvim_cmp_lsp.default_capabilities()
+	)
 
 	mason_lsp_config.setup({
+		automatic_installation = false,
 		ensure_installed = { 'ts_ls', 'lua_ls' },
-		handlers = { lsp_zero.default_setup },
+		handlers = {
+			function(server_name)
+				require("lspconfig")[server_name].setup({ on_attach = on_attach })
+			end,
+		},
 	})
 
 	lsp_config.dartls.setup({

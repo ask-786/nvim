@@ -1,7 +1,6 @@
 local config = function()
-	require('lsp-zero').extend_cmp()
-
 	local cmp = require('cmp')
+
 	cmp.setup({
 		mapping = {
 			-- `Enter` key to confirm completion
@@ -56,7 +55,6 @@ return {
 		'hrsh7th/cmp-path',
 		'saadparwaiz1/cmp_luasnip',
 		'VonHeikemen/lsp-zero.nvim',
-		'jcha0713/cmp-tw2css',
 	},
 	config = config,
 }

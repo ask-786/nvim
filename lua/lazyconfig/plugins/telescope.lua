@@ -1,4 +1,4 @@
-local map = require('lazyconfig.helpers').map_with_desc
+local map = require('lazyconfig.util').map_with_desc
 
 local get_visual_selection_text = function()
 	local _, srow, scol = unpack(vim.fn.getpos('v'))
@@ -111,13 +111,9 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = {
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
 			'nvim-telescope/telescope-ui-select.nvim',
-			'nvim-telescope/telescope-fzf-native.nvim',
 		},
 		config = config,
-	},
-	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'make',
-	},
+	}
 }

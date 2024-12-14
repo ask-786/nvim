@@ -1,4 +1,4 @@
-local map = require('lazyconfig.helpers').map_with_desc
+local map = require('lazyconfig.util').map_with_desc
 
 local config = function()
 	map('n', '<leader>zz', function()

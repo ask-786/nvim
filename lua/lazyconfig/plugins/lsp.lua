@@ -1,19 +1,9 @@
-local helpers = require('lazyconfig.helpers')
+local util = require('lazyconfig.util')
 
 return {
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		lazy = true,
-		config = false,
-		init = function()
-			vim.g.lsp_zero_extend_cmp = 0
-			vim.g.lsp_zero_extend_lspconfig = 0
-		end,
-	},
-	{
 		'nvimtools/none-ls.nvim',
-		config = helpers.null_ls_config,
+		config = util.null_ls_config,
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -23,14 +13,7 @@ return {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'williamboman/mason-lspconfig.nvim' },
 		},
-		config = helpers.lsp_config,
-	},
-	{
-		'williamboman/mason-lspconfig.nvim',
-		dependencies = {
-			'VonHeikemen/lsp-zero.nvim',
-			'williamboman/mason.nvim',
-		},
+		config = util.lsp_config,
 	},
 	{
 		'williamboman/mason.nvim',
