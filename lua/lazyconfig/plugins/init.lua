@@ -18,8 +18,4 @@ return {
 		event = 'VeryLazy',
 		opts = {},
 	},
-	{
-		'Exafunction/codeium.vim',
-		event = 'BufEnter',
-	},
 }

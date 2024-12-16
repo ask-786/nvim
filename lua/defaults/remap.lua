@@ -7,17 +7,13 @@ vim.g.mapleader = ' '
 local function diagnostic_jump(count, error_only)
 	return function()
 		if error_only == true then
-			vim.diagnostic.jump({
-				count = count,
-				severity = vim.diagnostic.severity.ERROR,
-			})
+			vim.diagnostic.jump({ count = count, severity = vim.diagnostic.severity.ERROR })
 		else
 			vim.diagnostic.jump({ count = count })
 		end
 	end
 end
 
---stylua: ignore start
 map('n', '<leader>pv', vim.cmd.Ex, 'Ex')
 
 map('v', 'J', ':m \'>+1<CR>gv=gv', 'Move Selected Lines Downwards')
@@ -36,7 +32,7 @@ map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 map({ 'n', 'v' }, '<leader>y', [["+y]], '[Y]ank to System Clipboard')
 map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
 
-map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', '[D]ia[G]nostics')
+map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', 'Tree Sitter Playground')
 
 map('n', '[d', diagnostic_jump(1), 'Next Diagnostic message')
 map('n', ']d', diagnostic_jump(-1), 'Prev Diagnostic message')
@@ -45,4 +41,3 @@ map('n', ']ed', diagnostic_jump(-1, true), 'Prev Diagnostic Error')
 
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
---stylua: ignore end
