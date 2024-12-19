@@ -10,7 +10,7 @@ return {
 				['<CR>'] = { 'select_and_accept', 'fallback' },
 				['<C-y>'] = { 'select_and_accept', 'fallback' },
 				['<C-p>'] = { 'select_prev', 'fallback' },
-				['<C-n>'] = { 'select_next', 'fallback' },
+				['<C-n>'] = { 'show', 'select_next', 'fallback' },
 				['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -29,6 +29,7 @@ return {
 			completion = {
 				documentation = {
 					auto_show = true,
+					auto_show_delay_ms = 200,
 					window = { border = 'rounded' }
 				},
 				menu = {
