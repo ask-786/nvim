@@ -1,4 +1,4 @@
-local config = function()
+--[[ local config = function()
 	local cmp = require('cmp')
 
 	cmp.setup({
@@ -57,4 +57,6 @@ return {
 		'VonHeikemen/lsp-zero.nvim',
 	},
 	config = config,
-}
+} ]]
+
+return {}

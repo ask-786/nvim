@@ -10,7 +10,7 @@ return {
 		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'saghen/blink.cmp' },
 			{ 'williamboman/mason-lspconfig.nvim' },
 		},
 		config = util.lsp_config,
@@ -18,10 +18,6 @@ return {
 	{
 		'williamboman/mason.nvim',
 		lazy = false,
-		opts = {
-			ui = {
-				border = 'rounded',
-			},
-		},
+		opts = { ui = { border = 'rounded' } },
 	},
 }

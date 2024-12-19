@@ -90,7 +90,7 @@ end
 M.lsp_config = function()
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
-	local nvim_cmp_lsp = require('cmp_nvim_lsp')
+	local blink = require('blink.cmp')
 
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
@@ -100,29 +100,29 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
-	local lspconfig_defaults = lsp_config.util.default_config
-	lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-		'force',
-		lspconfig_defaults.capabilities,
-		nvim_cmp_lsp.default_capabilities()
-	)
+	local capabilities = blink.get_lsp_capabilities(nil, true)
 
 	mason_lsp_config.setup({
 		automatic_installation = false,
 		ensure_installed = { 'ts_ls', 'lua_ls' },
 		handlers = {
 			function(server_name)
-				require("lspconfig")[server_name].setup({ on_attach = on_attach })
+				lsp_config[server_name].setup({
+					on_attach = on_attach,
+					capabilities = capabilities
+				})
 			end,
 		},
 	})
 
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities
 	})
 
 	lsp_config.lua_ls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			Lua = {
 				diagnostics = {
@@ -145,6 +145,7 @@ M.lsp_config = function()
 
 	lsp_config.angularls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			angular = {
 				forceStrictTemplates = true,
@@ -158,6 +159,7 @@ M.lsp_config = function()
 
 	lsp_config.ts_ls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			completions = {
 				completeFunctionCalls = true,
