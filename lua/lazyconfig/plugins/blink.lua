@@ -16,8 +16,11 @@ local get_opts = function()
 			nerd_font_variant = 'mono'
 		},
 		sources = {
-			default = { 'lsp', 'path', 'luasnip', 'buffer' },
+			default = { 'lsp', 'path', 'luasnip', 'buffer', "dadbod" },
 			cmdline = {},
+			providers = {
+				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+			},
 		},
 		signature = {
 			enabled = true,
