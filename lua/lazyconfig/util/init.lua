@@ -18,13 +18,7 @@ end
 ---@param desc string
 ---@param extra_opts? table
 M.map_with_desc = function(mode, lhs, rhs, desc, extra_opts)
-	local opts = { desc = desc }
-
-	if extra_opts then
-		for key, value in pairs(extra_opts) do
-			opts[key] = value
-		end
-	end
+	local opts = vim.tbl_deep_extend('force', { desc = desc }, extra_opts or {});
 
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
@@ -118,29 +112,6 @@ M.lsp_config = function()
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities
-	})
-
-	lsp_config.lua_ls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { 'vim' }
-				},
-				runtime = { version = 'LuaJIT' },
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						'${3rd}/luv/library',
-						unpack(vim.api.nvim_get_runtime_file('', true)),
-					},
-				},
-				completion = {
-					callSnippet = 'Replace',
-				},
-			},
-		},
 	})
 
 	lsp_config.angularls.setup({
