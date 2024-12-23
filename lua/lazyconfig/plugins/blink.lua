@@ -34,13 +34,14 @@ local get_opts = function()
 			window = { border = 'rounded' }
 		},
 		completion = {
-			menu = { border = 'rounded' },
+			menu = { auto_show = true, border = 'rounded' },
 			list = { selection = 'auto_insert' },
 			trigger = { show_on_insert_on_trigger_character = false },
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 200,
-				window = { border = 'rounded' }
+				window = { border = 'rounded' },
+				treesitter_highlighting = false
 			},
 		},
 		snippets = {
