@@ -12,26 +12,16 @@ local get_opts = function()
 			['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 			['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 		},
-		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = 'mono'
-		},
+		appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = 'mono' },
+		signature = { enabled = true, window = { border = 'rounded' } },
 		sources = {
 			default = { "lazydev", 'lsp', 'path', 'luasnip', 'buffer', "dadbod" },
 			cmdline = {},
 			providers = {
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-				lazydev = {
-					name = "LazyDev",
-					module = "lazydev.integrations.blink",
-					score_offset = 100,
-				},
+				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
 			},
 			min_keyword_length = 1
-		},
-		signature = {
-			enabled = true,
-			window = { border = 'rounded' }
 		},
 		completion = {
 			menu = { auto_show = true, border = 'rounded' },
