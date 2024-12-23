@@ -3,6 +3,7 @@ local get_opts = function()
 
 	return {
 		keymap = {
+			preset = 'none',
 			['<CR>'] = { 'select_and_accept', 'fallback' },
 			['<C-y>'] = { 'select_and_accept', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
@@ -30,6 +31,7 @@ local get_opts = function()
 		completion = {
 			menu = { border = 'rounded' },
 			list = { selection = 'auto_insert' },
+			trigger = { show_on_insert_on_trigger_character = false },
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 200,
