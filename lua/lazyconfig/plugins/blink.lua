@@ -5,7 +5,7 @@ local get_opts = function()
 		keymap = {
 			['<CR>'] = { 'select_and_accept', 'fallback' },
 			['<C-y>'] = { 'select_and_accept', 'fallback' },
-			['<C-p>'] = { 'select_prev', 'fallback' },
+			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 			['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
@@ -21,22 +21,20 @@ local get_opts = function()
 			providers = {
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 			},
+			min_keyword_length = 1
 		},
 		signature = {
 			enabled = true,
 			window = { border = 'rounded' }
 		},
 		completion = {
+			menu = { border = 'rounded' },
+			list = { selection = 'auto_insert' },
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 200,
 				window = { border = 'rounded' }
 			},
-			menu = {
-				auto_show = true,
-				border = 'rounded'
-			},
-			list = { selection = 'auto_insert' }
 		},
 		snippets = {
 			expand = function(snippet) luasnip.lsp_expand(snippet) end,
