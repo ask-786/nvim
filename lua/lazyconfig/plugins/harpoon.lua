@@ -8,7 +8,7 @@ local config = function()
 	map('n', '<leader>a', function() harpoon:list():add() end, '[A]dd file (harpoon)')
 	map('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, 'Toggle quickmenu (harpoon)')
 
-	local keys = { 'h', 'j', 'k', 'l' }
+	local keys = { '0', '9', '8', '7' }
 
 	for i, value in ipairs(keys) do
 		map('n', '<A-' .. value .. '>', function() harpoon:list():select(i) end, 'File ' .. i .. ' (harpoon)')
