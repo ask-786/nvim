@@ -6,6 +6,7 @@ local get_opts = function()
 			preset = 'none',
 			['<CR>'] = { 'select_and_accept', 'fallback' },
 			['<C-y>'] = { 'select_and_accept', 'fallback' },
+			['<C-e>'] = { 'hide', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
@@ -21,7 +22,6 @@ local get_opts = function()
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
 			},
-			min_keyword_length = 1
 		},
 		completion = {
 			menu = { auto_show = true, border = 'rounded' },
