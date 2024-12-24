@@ -21,6 +21,7 @@ local get_opts = function()
 			providers = {
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+				lsp = { fallbacks = {}, score_offset = 2 }
 			},
 		},
 		completion = {
