@@ -31,7 +31,6 @@ local get_opts = function()
 				auto_show = true,
 				auto_show_delay_ms = 200,
 				window = { border = 'rounded' },
-				treesitter_highlighting = false
 			},
 		},
 		snippets = {
