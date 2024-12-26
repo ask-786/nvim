@@ -18,3 +18,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('ask-lsp-attach', { clear = true }),
 	callback = util.lsp_highlight,
 })
+
+vim.api.nvim_create_autocmd('TermOpen', {
+	pattern = '*',
+	callback = function()
+		vim.opt_local.nu = true;
+		vim.opt_local.rnu = true;
+	end
+})
