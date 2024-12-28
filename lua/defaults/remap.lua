@@ -42,10 +42,5 @@ map('n', ']ed', diagnostic_jump(-1, true), 'Prev Diagnostic Error')
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
 
-
-map('n', '<A-h>', '<Cmd>vertical resize -5<CR>', 'Resize Window')
-map('n', '<A-j>', '<Cmd>resize -5<CR>', 'Resize Window')
-map('n', '<A-k>', '<Cmd>resize +5<CR>', 'Resize Window')
-map('n', '<A-l>', '<Cmd>vertical resize +5<CR>', 'Resize Window')
 map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
 map('n', '<leader>o', 'gF', "Open file under cursor", { silent = true })
