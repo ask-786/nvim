@@ -18,8 +18,6 @@ This repository contains a Neovim configuration written in Lua.
 - Productivity tools like `telescope` and `undotree`.
 - Git integration with `fugitive` and `gitsigns`.
 
-## Usage
-
 ### Prerequisites
 
 - Neovim 0.10 or higher
