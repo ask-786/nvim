@@ -31,6 +31,5 @@ This repository contains a Neovim configuration written in Lua.
 1. Clone the repository:
 
 ```bash
-echo "hello"
 git clone https://github.com/Ask-786/nvim ~/.config/nvim
 ```
