@@ -1,13 +1,20 @@
 return {
-	'michaelrommel/nvim-silicon',
+	'krivahtoo/silicon.nvim',
 	lazy = true,
+	build = "./install.sh",
 	cmd = 'Silicon',
 	opts = {
-		font = 'CaskaydiaMono Nerd Font=34;Noto Color Emoji=34',
-		to_clipboard = true,
+		output = {
+			file = "",
+			clipboard = true,
+			path = "~/Pictures/silicon",
+			format = "silicon_[year][month][day]_[hour][minute][second].png",
+		},
+		font = 'JetBrainsMonoNerdFont',
 		theme = 'Catppuccin Mocha',
+		background = '#AAAAFF',
 		window_title = function()
 			return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ':~:.')
 		end,
-	},
+	}
 }
