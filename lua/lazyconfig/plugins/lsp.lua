@@ -1,4 +1,4 @@
-local util = require('lazyconfig.util')
+local util = require('lazyconfig.util.lsp')
 
 return {
 	{
