@@ -16,6 +16,11 @@ M.live_multigrep = function(opts)
 			end
 
 			local pieces = vim.split(prompt, "  ")
+
+			if (not pieces[1] or pieces[1] == "") then
+				return nil
+			end
+
 			local args = { "rg" }
 			if pieces[1] then
 				table.insert(args, "-e")
@@ -27,11 +32,9 @@ M.live_multigrep = function(opts)
 				table.insert(args, pieces[2])
 			end
 
-			---@diagnostic disable-next-line: deprecated
-			return vim.tbl_flatten {
-				args,
-				{ "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
-			}
+			return vim.iter(
+				{ args, { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" }, }
+			):flatten():totable()
 		end,
 		entry_maker = make_entry.gen_from_vimgrep(opts),
 		cwd = opts.cwd,
