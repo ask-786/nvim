@@ -1,4 +1,5 @@
 local map = require('lazyconfig.util').map_with_desc
+local live_grep = require('lazyconfig.util.telescope').live_multigrep
 
 local get_visual_selection_text = function()
 	local _, srow, scol = unpack(vim.fn.getpos('v'))
@@ -55,7 +56,7 @@ local config = function()
 	end
 
 	map('n', '<leader>pf', builtin.find_files, '[P]roject [F]iles')
-	map('n', '<leader>pg', builtin.live_grep, '[P]roject [G]rep')
+	map('n', '<leader>pg', live_grep, '[P]roject [G]rep')
 	map('n', '<leader>pa', builtin.oldfiles, '[P]roject Old Files')
 	map('n', '<leader>pr', builtin.lsp_references, '[P]roject [R]eferences')
 	map('n', '<leader>pe', builtin.diagnostics, '[P]roject Diagnostics')
