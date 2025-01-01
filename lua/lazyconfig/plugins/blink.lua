@@ -22,7 +22,6 @@ local get_opts = function()
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 10 },
 				lsp = { fallbacks = {}, score_offset = 5 },
-				luasnip = { score_offset = 1 },
 			},
 		},
 		completion = {
