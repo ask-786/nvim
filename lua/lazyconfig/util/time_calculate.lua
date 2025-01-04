@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 local M = {};
 
 -- Function to convert "HH:MM" to minutes
@@ -42,8 +43,9 @@ M.calculate_time = function()
 
 	local times = {};
 
-	for i, child in ipairs(children) do
+	for _, child in ipairs(children) do
 		local start_row, start_col, end_row, end_col = child:range();
+
 		local text = vim.api.nvim_buf_get_text(0, start_row, start_col, end_row, end_col, {})
 
 		if #text > 0 then
