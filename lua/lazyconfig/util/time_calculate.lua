@@ -3,6 +3,11 @@ local M = {};
 -- Function to convert "HH:MM" to minutes
 local function time_to_minutes(time_str)
 	local hours, minutes = time_str:match("(%d+):(%d+)")
+
+	if not hours or not minutes then
+		return 0
+	end
+
 	return tonumber(hours) * 60 + tonumber(minutes)
 end
 
@@ -25,7 +30,15 @@ local function minutes_to_time(minutes)
 end
 
 M.calculate_time = function()
-	local parsed = vim.treesitter.query.parse("markdown", "(document (section (pipe_table (pipe_table_row) @row)))")
+	local parsed = vim.treesitter.query.parse(
+		"markdown",
+		[[
+			(document
+				(section
+					(pipe_table
+						(pipe_table_row) @row)))
+		]]
+	)
 	local root = vim.treesitter.get_parser(0, "markdown"):parse()[1]:root()
 
 	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
