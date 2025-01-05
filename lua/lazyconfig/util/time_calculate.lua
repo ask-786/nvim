@@ -39,10 +39,14 @@ M.calculate_time = function()
 						(pipe_table_row) @row)))
 		]]
 	)
+
 	local root = vim.treesitter.get_parser(0, "markdown"):parse()[1]:root()
+	local row_index = 0;
 
 	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
 		local children = vim.list_slice(parent:named_children(), 2, #parent:named_children() - 1)
+
+		row_index = row_index + 1
 
 		local times = {};
 
@@ -57,7 +61,7 @@ M.calculate_time = function()
 		end
 
 		if #times % 2 ~= 0 then
-			vim.notify("Can't calculate", vim.log.levels.WARN)
+			vim.notify("Can't calculate on row " .. row_index, vim.log.levels.WARN)
 			goto continue
 		end
 
