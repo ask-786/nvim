@@ -29,7 +29,7 @@ M.calculate_time = function()
 	local root = vim.treesitter.get_parser(0, "markdown"):parse()[1]:root()
 
 	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
-		local children = vim.list_slice(parent:named_children(), 2, 7)
+		local children = vim.list_slice(parent:named_children(), 2, #parent:named_children() - 1)
 
 		local times = {};
 
