@@ -44,13 +44,14 @@ M.calculate_time = function()
 	local row_index = 0;
 
 	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
-		local children = vim.list_slice(parent:named_children(), 2, #parent:named_children() - 1)
+		local children = parent:named_children();
+		local sliced_children = vim.list_slice(children, 2, #children - 1)
 
 		row_index = row_index + 1
 
 		local times = {};
 
-		for _, child in ipairs(children) do
+		for _, child in ipairs(sliced_children) do
 			local text = vim.treesitter.get_node_text(child, 0);
 
 			local str = vim.trim(text)
@@ -80,7 +81,7 @@ M.calculate_time = function()
 		local total_minutes = calculate_total_time(sessions)
 		local total_time = minutes_to_time(total_minutes)
 
-		local start_row, start_col, end_row, end_col = parent:named_children()[#parent:named_children()]:range();
+		local start_row, start_col, end_row, end_col = children[#children]:range();
 		vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, { " " .. total_time .. " " })
 
 		::continue::
