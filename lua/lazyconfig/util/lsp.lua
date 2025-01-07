@@ -143,9 +143,6 @@ M.lsp_config = function()
 			completions = {
 				completeFunctionCalls = true,
 			},
-			implicitProjectConfiguration = {
-				checkJs = true,
-			},
 		},
 	})
 end
