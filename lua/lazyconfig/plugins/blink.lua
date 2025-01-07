@@ -26,7 +26,12 @@ local get_opts = function()
 		},
 		completion = {
 			menu = { auto_show = true, border = 'rounded' },
-			list = { selection = 'auto_insert' },
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true
+				}
+			},
 			trigger = {
 				show_on_insert_on_trigger_character = false,
 				show_on_trigger_character = false

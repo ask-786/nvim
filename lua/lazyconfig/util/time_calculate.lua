@@ -82,6 +82,16 @@ M.calculate_time = function()
 		local total_time = minutes_to_time(total_minutes)
 
 		local start_row, start_col, end_row, end_col = children[#children]:range();
+
+		if
+				not start_row or
+				not start_col or
+				not end_row or
+				not end_col
+		then
+			return
+		end
+
 		vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, { " " .. total_time .. " " })
 
 		::continue::

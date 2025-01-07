@@ -88,17 +88,15 @@ end
 M.lsp_config = function()
 	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
-	local blink = require('blink.cmp')
 
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
+	---@diagnostic disable-next-line: duplicate-set-field
 	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 		opts = opts or {}
 		opts.border = opts.border or 'rounded'
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
-
-	local capabilities = blink.get_lsp_capabilities(nil, true)
 
 	mason_lsp_config.setup({
 		automatic_installation = false,
@@ -107,7 +105,6 @@ M.lsp_config = function()
 			function(server_name)
 				lsp_config[server_name].setup({
 					on_attach = on_attach,
-					capabilities = capabilities
 				})
 			end,
 		},
@@ -115,12 +112,10 @@ M.lsp_config = function()
 
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
-		capabilities = capabilities
 	})
 
 	lsp_config.angularls.setup({
 		on_attach = on_attach,
-		capabilities = capabilities,
 		settings = {
 			angular = {
 				forceStrictTemplates = true,
@@ -132,9 +127,18 @@ M.lsp_config = function()
 		},
 	})
 
+	--TODO: remove me
+	lsp_config.tailwindcss.setup({
+		on_attach = on_attach,
+		settings = {
+			tailwindCSS = {
+				rootFontSize = 14
+			}
+		}
+	})
+
 	lsp_config.ts_ls.setup({
 		on_attach = on_attach,
-		capabilities = capabilities,
 		settings = {
 			completions = {
 				completeFunctionCalls = true,
