@@ -1,7 +1,7 @@
 return {
 	{ 'nvim-lua/plenary.nvim' },
 	{ 'nvim-tree/nvim-web-devicons' },
-	{ "LunarVim/bigfile.nvim", },
+	{ 'LunarVim/bigfile.nvim' },
 	{ 'tpope/vim-sleuth' },
 	{
 		'windwp/nvim-autopairs',

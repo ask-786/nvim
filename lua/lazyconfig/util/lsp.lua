@@ -4,11 +4,17 @@ local M = {}
 
 local function filter_without(servers, bufnr)
 	return function(client)
-		if vim.tbl_contains(servers, client.name) then return false end
+		if vim.tbl_contains(servers, client.name) then
+			return false
+		end
 
-		if client.name == 'null-ls' then return true end
+		if client.name == 'null-ls' then
+			return true
+		end
 
-		if client.supports_method('textDocument/formatting', bufnr) then return true end
+		if client.supports_method('textDocument/formatting', bufnr) then
+			return true
+		end
 	end
 end
 
@@ -30,7 +36,7 @@ local function on_attach(_, bufnr)
 			bufnr = bufnr,
 			async = false,
 			timeout_ms = 5000,
-			filter = filter_without({ 'ts_ls' }, bufnr),
+			filter = filter_without({ 'ts_ls', 'lua_ls' }, bufnr),
 		})
 	end, '[F]ormat [F]ile')
 end
@@ -42,6 +48,7 @@ M.null_ls_config = function()
 		on_attach = on_attach,
 		sources = {
 			null_ls.builtins.formatting.prettier,
+			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.google_java_format,
@@ -59,7 +66,7 @@ M.lsp_highlight = function(event)
 	end
 
 	local highlight_augroup =
-			vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
+		vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
 
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		buffer = event.buf,
@@ -132,9 +139,9 @@ M.lsp_config = function()
 		on_attach = on_attach,
 		settings = {
 			tailwindCSS = {
-				rootFontSize = 14
-			}
-		}
+				rootFontSize = 14,
+			},
+		},
 	})
 
 	lsp_config.ts_ls.setup({
@@ -147,4 +154,4 @@ M.lsp_config = function()
 	})
 end
 
-return M;
+return M

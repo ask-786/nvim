@@ -2,7 +2,7 @@ local calculate_time = require('lazyconfig.util.time_calculate').calculate_time
 local map = require('lazyconfig.util').map_with_desc
 
 local config = function()
-	local configs = require("nvim-treesitter.configs")
+	local configs = require('nvim-treesitter.configs')
 
 	configs.setup({
 		ensure_installed = { 'javascript', 'typescript', 'lua' },

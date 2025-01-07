@@ -16,11 +16,15 @@ local get_opts = function()
 		appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = 'mono' },
 		signature = { enabled = true, window = { border = 'rounded' } },
 		sources = {
-			default = { "lazydev", 'lsp', 'path', 'luasnip', 'buffer', "dadbod" },
+			default = { 'lazydev', 'lsp', 'path', 'luasnip', 'buffer', 'dadbod' },
 			cmdline = {},
 			providers = {
-				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 10 },
+				dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+				lazydev = {
+					name = 'LazyDev',
+					module = 'lazydev.integrations.blink',
+					score_offset = 10,
+				},
 				lsp = { fallbacks = {}, score_offset = 5 },
 			},
 		},
@@ -29,12 +33,12 @@ local get_opts = function()
 			list = {
 				selection = {
 					preselect = false,
-					auto_insert = true
-				}
+					auto_insert = true,
+				},
 			},
 			trigger = {
 				show_on_insert_on_trigger_character = false,
-				show_on_trigger_character = false
+				show_on_trigger_character = false,
 			},
 			documentation = {
 				auto_show = true,
@@ -43,14 +47,18 @@ local get_opts = function()
 			},
 		},
 		snippets = {
-			expand = function(snippet) luasnip.lsp_expand(snippet) end,
+			expand = function(snippet)
+				luasnip.lsp_expand(snippet)
+			end,
 			active = function(filter)
 				if filter and filter.direction then
 					return luasnip.jumpable(filter.direction)
 				end
 				return luasnip.in_snippet()
 			end,
-			jump = function(direction) luasnip.jump(direction) end,
+			jump = function(direction)
+				luasnip.jump(direction)
+			end,
 		},
 	}
 end
@@ -58,6 +66,6 @@ end
 return {
 	'saghen/blink.cmp',
 	dependencies = { 'L3MON4D3/LuaSnip' },
-	build = "cargo build --release",
+	build = 'cargo build --release',
 	opts = get_opts,
 }

@@ -8,19 +8,31 @@ local get_visual_selection_text = function()
 	-- Visual line mode
 	if vim.fn.mode() == 'V' then
 		if srow > erow then
-			return table.concat(vim.api.nvim_buf_get_lines(0, erow - 1, srow, true), '\n')
+			return table.concat(
+				vim.api.nvim_buf_get_lines(0, erow - 1, srow, true),
+				'\n'
+			)
 		end
 
-		return table.concat(vim.api.nvim_buf_get_lines(0, srow - 1, erow, true), '\n')
+		return table.concat(
+			vim.api.nvim_buf_get_lines(0, srow - 1, erow, true),
+			'\n'
+		)
 	end
 
 	-- Regular visual mode
 	if vim.fn.mode() == 'v' then
 		if srow < erow or (srow == erow and scol <= ecol) then
-			return table.concat(vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {}), '\n')
+			return table.concat(
+				vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {}),
+				'\n'
+			)
 		end
 
-		return table.concat(vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {}), '\n')
+		return table.concat(
+			vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {}),
+			'\n'
+		)
 	end
 end
 
@@ -75,10 +87,10 @@ local config = function()
 				}),
 			},
 			fzf = {
-				fuzzy = true,               -- false will only do exact matching
+				fuzzy = true, -- false will only do exact matching
 				override_generic_sorter = true, -- override the generic sorter
 				override_file_sorter = true, -- override the file sorter
-				case_mode = 'smart_case',   -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+				case_mode = 'smart_case', -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
 			},
 		},
 		defaults = {
@@ -113,9 +125,9 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = {
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 			'nvim-telescope/telescope-ui-select.nvim',
 		},
 		config = config,
-	}
+	},
 }

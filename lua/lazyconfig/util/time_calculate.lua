@@ -1,8 +1,8 @@
-local M = {};
+local M = {}
 
 -- Function to convert "HH:MM" to minutes
 local function time_to_minutes(time_str)
-	local hours, minutes = time_str:match("(%d+):(%d+)")
+	local hours, minutes = time_str:match('(%d+):(%d+)')
 
 	if not hours or not minutes then
 		return 0
@@ -26,12 +26,12 @@ end
 local function minutes_to_time(minutes)
 	local hours = math.floor(minutes / 60)
 	local mins = minutes % 60
-	return string.format("%02d:%02d", hours, mins)
+	return string.format('%02d:%02d', hours, mins)
 end
 
 M.calculate_time = function()
 	local parsed = vim.treesitter.query.parse(
-		"markdown",
+		'markdown',
 		[[
 			(document
 				(section
@@ -40,62 +40,63 @@ M.calculate_time = function()
 		]]
 	)
 
-	local root = vim.treesitter.get_parser(0, "markdown"):parse()[1]:root()
-	local row_index = 0;
+	local root = vim.treesitter.get_parser(0, 'markdown'):parse()[1]:root()
+	local row_index = 0
 
 	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
-		local children = parent:named_children();
+		local children = parent:named_children()
 		local sliced_children = vim.list_slice(children, 2, #children - 1)
 
 		row_index = row_index + 1
 
-		local times = {};
+		local times = {}
 
 		for _, child in ipairs(sliced_children) do
-			local text = vim.treesitter.get_node_text(child, 0);
+			local text = vim.treesitter.get_node_text(child, 0)
 
 			local str = vim.trim(text)
 
-			if str ~= "" then
+			if str ~= '' then
 				table.insert(times, str)
 			end
 		end
 
 		if #times % 2 ~= 0 then
-			vim.notify("Can't calculate on row " .. row_index, vim.log.levels.WARN)
+			vim.notify('Can\'t calculate on row ' .. row_index, vim.log.levels.WARN)
 			goto continue
 		end
 
-		local sessions = {};
+		local sessions = {}
 
 		for i = 1, #times, 2 do
-			local session = {};
+			local session = {}
 
-			session.punch_in = times[i];
-			session.punch_out = times[i + 1];
+			session.punch_in = times[i]
+			session.punch_out = times[i + 1]
 
-			table.insert(sessions, session);
+			table.insert(sessions, session)
 		end
-
 
 		local total_minutes = calculate_total_time(sessions)
 		local total_time = minutes_to_time(total_minutes)
 
-		local start_row, start_col, end_row, end_col = children[#children]:range();
+		local start_row, start_col, end_row, end_col = children[#children]:range()
 
-		if
-				not start_row or
-				not start_col or
-				not end_row or
-				not end_col
-		then
+		if not start_row or not start_col or not end_row or not end_col then
 			return
 		end
 
-		vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, { " " .. total_time .. " " })
+		vim.api.nvim_buf_set_text(
+			0,
+			start_row,
+			start_col,
+			end_row,
+			end_col,
+			{ ' ' .. total_time .. ' ' }
+		)
 
 		::continue::
 	end
 end
 
-return M;
+return M

@@ -1,72 +1,74 @@
 return {
-	"mfussenegger/nvim-dap",
+	'mfussenegger/nvim-dap',
 	dependencies = {
-		"theHamsta/nvim-dap-virtual-text",
-		"nvim-neotest/nvim-nio",
-		"rcarriga/nvim-dap-ui",
+		'theHamsta/nvim-dap-virtual-text',
+		'nvim-neotest/nvim-nio',
+		'rcarriga/nvim-dap-ui',
 	},
 	opts = {},
 	config = function()
-		local dap = require("dap");
-		local dapui = require("dapui");
-		local dapvirtual = require("nvim-dap-virtual-text");
+		local dap = require('dap')
+		local dapui = require('dapui')
+		local dapvirtual = require('nvim-dap-virtual-text')
 
 		---@diagnostic disable-next-line: missing-parameter
 		dapvirtual.setup()
 		dapui.setup()
 
 		dap.adapters.chrome = {
-			type = "executable",
-			command = "node",
-			args = { os.getenv("HOME") .. "/personal/vscode-chrome-debug/out/src/chromeDebug.js" }
+			type = 'executable',
+			command = 'node',
+			args = {
+				os.getenv('HOME')
+					.. '/personal/vscode-chrome-debug/out/src/chromeDebug.js',
+			},
 		}
-
 
 		dap.configurations.javascript = {
 			{
-				type = "chrome",
-				request = "attach",
-				program = "${file}",
+				type = 'chrome',
+				request = 'attach',
+				program = '${file}',
 				cwd = vim.fn.getcwd(),
 				sourceMaps = true,
-				protocol = "inspector",
+				protocol = 'inspector',
 				port = 9222,
-				webRoot = "${workspaceFolder}"
+				webRoot = '${workspaceFolder}',
 			},
 			{
-				type = "chrome",
-				request = "launch",
-				program = "${file}",
+				type = 'chrome',
+				request = 'launch',
+				program = '${file}',
 				cwd = vim.fn.getcwd(),
 				sourceMaps = true,
-				runtimeExecutable = "/usr/bin/brave-browser-stable",
-				protocol = "inspector",
+				runtimeExecutable = '/usr/bin/brave-browser-stable',
+				protocol = 'inspector',
 				port = 9222,
-				webRoot = "${workspaceFolder}"
-			}
+				webRoot = '${workspaceFolder}',
+			},
 		}
 
 		dap.configurations.typescript = {
 			{
-				type = "chrome",
-				request = "launch",
-				program = "${file}",
+				type = 'chrome',
+				request = 'launch',
+				program = '${file}',
 				cwd = vim.fn.getcwd(),
 				sourceMaps = true,
-				runtimeExecutable = "/usr/bin/brave-browser-stable",
-				protocol = "inspector",
+				runtimeExecutable = '/usr/bin/brave-browser-stable',
+				protocol = 'inspector',
 				port = 9222,
-				webRoot = "${workspaceFolder}"
+				webRoot = '${workspaceFolder}',
 			},
 			{
-				type = "chrome",
-				request = "attach",
-				program = "${file}",
+				type = 'chrome',
+				request = 'attach',
+				program = '${file}',
 				cwd = vim.fn.getcwd(),
 				sourceMaps = true,
-				protocol = "inspector",
+				protocol = 'inspector',
 				port = 9222,
-				webRoot = "${workspaceFolder}"
+				webRoot = '${workspaceFolder}',
 			},
 		}
 
@@ -91,5 +93,5 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
-	end
+	end,
 }

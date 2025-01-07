@@ -7,7 +7,10 @@ vim.g.mapleader = ' '
 local function diagnostic_jump(count, error_only)
 	return function()
 		if error_only == true then
-			vim.diagnostic.jump({ count = count, severity = vim.diagnostic.severity.ERROR })
+			vim.diagnostic.jump({
+				count = count,
+				severity = vim.diagnostic.severity.ERROR,
+			})
 		else
 			vim.diagnostic.jump({ count = count })
 		end
@@ -25,7 +28,9 @@ map('n', '<C-u>', '<C-u>zz', 'Jump Half Page [U]pwards')
 map('n', '<leader>vs', vim.cmd.vsplit, 'Split screen Vertically')
 map('n', '<leader>hs', vim.cmd.split, 'Split screen Horizontally')
 
-map('n', '<A-t>', function() vim.cmd.tabnew('.') end, 'Create new Tab')
+map('n', '<A-t>', function()
+	vim.cmd.tabnew('.')
+end, 'Create new Tab')
 map('n', '<A-n>', vim.cmd.tabnext, 'Jump to next Tab')
 map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 
@@ -43,4 +48,4 @@ map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
 
 map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
-map('n', '<leader>o', 'gF', "Open file under cursor", { silent = true })
+map('n', '<leader>o', 'gF', 'Open file under cursor', { silent = true })

@@ -1,10 +1,7 @@
 local util = require('lazyconfig.util.lsp')
 
 return {
-	{
-		'nvimtools/none-ls.nvim',
-		config = util.null_ls_config,
-	},
+	{ 'nvimtools/none-ls.nvim', config = util.null_ls_config },
 	{
 		'neovim/nvim-lspconfig',
 		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
