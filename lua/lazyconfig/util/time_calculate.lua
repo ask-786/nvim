@@ -61,11 +61,6 @@ M.calculate_time = function()
 			end
 		end
 
-		if #times % 2 ~= 0 then
-			vim.notify('Can\'t calculate on row ' .. row_index, vim.log.levels.WARN)
-			goto continue
-		end
-
 		local sessions = {}
 
 		for i = 1, #times, 2 do
@@ -74,7 +69,9 @@ M.calculate_time = function()
 			session.punch_in = times[i]
 			session.punch_out = times[i + 1]
 
-			table.insert(sessions, session)
+			if session.punch_in and session.punch_out then
+				table.insert(sessions, session)
+			end
 		end
 
 		local total_minutes = calculate_total_time(sessions)
@@ -94,8 +91,6 @@ M.calculate_time = function()
 			end_col,
 			{ ' ' .. total_time .. ' ' }
 		)
-
-		::continue::
 	end
 end
 
