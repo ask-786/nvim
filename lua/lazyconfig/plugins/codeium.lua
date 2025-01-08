@@ -1,7 +1,8 @@
 return {
-	'Exafunction/codeium.nvim',
+	'ask-786/codeium.nvim',
 	opts = {
 		enable_cmp_source = false,
+		quite = true,
 		virtual_text = {
 			enabled = true,
 			key_bindings = {
