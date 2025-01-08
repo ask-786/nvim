@@ -29,6 +29,8 @@ return {
 					'scss',
 					'markdown',
 					'htmlangular',
+					'yaml',
+					'json',
 				}
 				local results = {}
 				for _, ft in ipairs(filetypes) do
