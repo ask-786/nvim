@@ -1,43 +1,27 @@
+local conform_util = require('lazyconfig.util.conform')
+
 return {
 	'stevearc/conform.nvim',
 	keys = {
 		{
 			'<leader>ff',
 			function()
-				require('conform').format({ async = true, lsp_format = 'fallback' })
+				require('conform').format()
 			end,
 			mode = { 'n', 'x' },
-			desc = '[F]ormat buffer',
+			desc = '[F]ormat [F]ile',
 		},
 	},
 	opts = {
 		notify_on_error = false,
 		default_format_opts = {
 			lsp_format = 'fallback',
+			async = true,
 		},
 		formatters_by_ft = vim.tbl_deep_extend(
 			'force',
-			{ lua = { 'stylua' }, python = { 'isort' } },
-			(function()
-				local filetypes = {
-					'javascript',
-					'javascriptreact',
-					'typescript',
-					'typescriptreact',
-					'html',
-					'css',
-					'scss',
-					'markdown',
-					'htmlangular',
-					'yaml',
-					'json',
-				}
-				local results = {}
-				for _, ft in ipairs(filetypes) do
-					results[ft] = { 'prettier' }
-				end
-				return results
-			end)()
+			conform_util.create_ft_list('prettier', conform_util.prettier_fts),
+			{ lua = { 'stylua' }, python = { 'isort' } }
 		),
 	},
 }
