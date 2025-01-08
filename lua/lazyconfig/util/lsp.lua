@@ -2,22 +2,6 @@ local map_with_desc = require('lazyconfig.util').map_with_desc
 
 local M = {}
 
-local function filter_without(servers, bufnr)
-	return function(client)
-		if vim.tbl_contains(servers, client.name) then
-			return false
-		end
-
-		if client.name == 'null-ls' then
-			return true
-		end
-
-		if client.supports_method('textDocument/formatting', bufnr) then
-			return true
-		end
-	end
-end
-
 ---On Attach Function For LSPs
 local function on_attach(_, bufnr)
 	local map = function(mode, keys, action, desc)
@@ -31,30 +15,6 @@ local function on_attach(_, bufnr)
 	map('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 	map('n', '<leader>rn', vim.lsp.buf.rename, '[R]ename')
 	map('i', '<C-a>', vim.lsp.buf.signature_help, 'Signature Help')
-	map({ 'n', 'x' }, '<leader>ff', function()
-		vim.lsp.buf.format({
-			bufnr = bufnr,
-			async = false,
-			timeout_ms = 5000,
-			filter = filter_without({ 'ts_ls', 'lua_ls' }, bufnr),
-		})
-	end, '[F]ormat [F]ile')
-end
-
-M.null_ls_config = function()
-	local null_ls = require('null-ls')
-
-	null_ls.setup({
-		on_attach = on_attach,
-		sources = {
-			null_ls.builtins.formatting.prettier,
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.black,
-			null_ls.builtins.formatting.shfmt,
-			null_ls.builtins.formatting.google_java_format,
-			null_ls.builtins.formatting.pretty_php,
-		},
-	})
 end
 
 M.lsp_highlight = function(event)
@@ -110,9 +70,9 @@ M.lsp_config = function()
 		ensure_installed = { 'ts_ls', 'lua_ls' },
 		handlers = {
 			function(server_name)
-				lsp_config[server_name].setup({
-					on_attach = on_attach,
-				})
+				local server = lsp_config[server_name] or {}
+				server.on_attach = on_attach
+				lsp_config[server_name].setup(server)
 			end,
 		},
 	})

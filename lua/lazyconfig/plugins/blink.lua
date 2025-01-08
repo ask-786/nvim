@@ -1,6 +1,4 @@
 local get_opts = function()
-	local luasnip = require('luasnip')
-
 	return {
 		keymap = {
 			preset = 'none',
@@ -16,7 +14,7 @@ local get_opts = function()
 		appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = 'mono' },
 		signature = { enabled = true, window = { border = 'rounded' } },
 		sources = {
-			default = { 'lazydev', 'lsp', 'path', 'luasnip', 'buffer', 'dadbod' },
+			default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 			cmdline = {},
 			providers = {
 				dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
@@ -46,20 +44,7 @@ local get_opts = function()
 				window = { border = 'rounded' },
 			},
 		},
-		snippets = {
-			expand = function(snippet)
-				luasnip.lsp_expand(snippet)
-			end,
-			active = function(filter)
-				if filter and filter.direction then
-					return luasnip.jumpable(filter.direction)
-				end
-				return luasnip.in_snippet()
-			end,
-			jump = function(direction)
-				luasnip.jump(direction)
-			end,
-		},
+		snippets = { preset = 'luasnip' },
 	}
 end
 
