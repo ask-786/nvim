@@ -29,6 +29,35 @@ local function minutes_to_time(minutes)
 	return string.format('%02d:%02d', hours, mins)
 end
 
+---@param sessions string[]
+local calculate_grand_total = function(sessions)
+	local grand_total = 0
+	for _, session in ipairs(sessions) do
+		grand_total = grand_total + time_to_minutes(session)
+	end
+	return minutes_to_time(grand_total)
+end
+
+---comment
+---@param node TSNode
+---@param text string
+local set_node_text = function(node, text)
+	local start_row, start_col, end_row, end_col = node:range()
+
+	if not start_row or not start_col or not end_row or not end_col then
+		return
+	end
+
+	vim.api.nvim_buf_set_text(
+		0,
+		start_row,
+		start_col,
+		end_row,
+		end_col,
+		{ ' ' .. text .. ' ' }
+	)
+end
+
 M.calculate_time = function()
 	local parsed = vim.treesitter.query.parse(
 		'markdown',
@@ -43,7 +72,7 @@ M.calculate_time = function()
 	local root = vim.treesitter.get_parser(0, 'markdown'):parse()[1]:root()
 	local row_index = 0
 
-	for _, parent in parsed:iter_captures(root, 0, 1, -1) do
+	for _, parent in parsed:iter_captures(root, 0) do
 		local children = parent:named_children()
 		local sliced_children = vim.list_slice(children, 2, #children - 1)
 
@@ -77,20 +106,23 @@ M.calculate_time = function()
 		local total_minutes = calculate_total_time(sessions)
 		local total_time = minutes_to_time(total_minutes)
 
-		local start_row, start_col, end_row, end_col = children[#children]:range()
+		set_node_text(children[#children], total_time)
+	end
 
-		if not start_row or not start_col or not end_row or not end_col then
-			return
+	local totals = {}
+	local last_node = nil
+	for _, parent in parsed:iter_captures(root, 0) do
+		local last_child = parent:named_child(#parent:named_children() - 1)
+		if last_child then
+			local text = vim.treesitter.get_node_text(last_child, 0)
+			local str = vim.trim(text)
+			table.insert(totals, str)
+			last_node = last_child
 		end
+	end
 
-		vim.api.nvim_buf_set_text(
-			0,
-			start_row,
-			start_col,
-			end_row,
-			end_col,
-			{ ' ' .. total_time .. ' ' }
-		)
+	if last_node then
+		set_node_text(last_node, calculate_grand_total(totals))
 	end
 end
 
