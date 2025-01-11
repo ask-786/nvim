@@ -58,7 +58,7 @@ local config = function()
 				search_string = get_visual_selection_text()
 			end
 
-			if not search_string then
+			if not search_string or search_string == '' then
 				vim.notify('Can\'t search nil value')
 				return
 			end
@@ -82,22 +82,17 @@ local config = function()
 	telescope.setup({
 		extensions = {
 			['ui-select'] = {
-				require('telescope.themes').get_dropdown({
-					-- even more opts
-				}),
+				require('telescope.themes').get_dropdown({}),
 			},
 			fzf = {
-				fuzzy = true, -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = 'smart_case', -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = 'smart_case',
 			},
 		},
 		defaults = {
-			file_ignore_patterns = {
-				'node_modules',
-				'.git/',
-			},
+			file_ignore_patterns = { 'node_modules', '.git/' },
 			mappings = {
 				i = {
 					['<M-j>'] = 'results_scrolling_left',
@@ -111,7 +106,6 @@ local config = function()
 		},
 		pickers = {
 			find_files = {
-				-- Show hidden files
 				hidden = true,
 			},
 		},

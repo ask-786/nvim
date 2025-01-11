@@ -55,6 +55,7 @@ M.live_multigrep = function(opts)
 		.new(opts, {
 			debounce = 100,
 			prompt_title = 'Multi Grep',
+			hidden = true,
 			finder = finder,
 			previewer = conf.grep_previewer(opts),
 			sorter = require('telescope.sorters').empty(),
