@@ -1,4 +1,6 @@
 local get_opts = function()
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
 	return {
 		keymap = {
 			preset = 'none',
@@ -34,10 +36,7 @@ local get_opts = function()
 					auto_insert = true,
 				},
 			},
-			trigger = {
-				show_on_insert_on_trigger_character = false,
-				show_on_trigger_character = false,
-			},
+			trigger = { show_on_insert_on_trigger_character = false },
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 200,
