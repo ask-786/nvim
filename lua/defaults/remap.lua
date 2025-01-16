@@ -37,7 +37,7 @@ map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 map({ 'n', 'v' }, '<leader>y', [["+y]], '[Y]ank to System Clipboard')
 map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
 
-map('n', '<leader>tsp', '<cmd>:InspectTree<cr>', 'Tree Sitter Playground')
+map('n', '<leader>tsp', '<cmd>:InspectTree<CR>', 'Tree Sitter Playground')
 
 map('n', '[d', diagnostic_jump(1), 'Next Diagnostic message')
 map('n', ']d', diagnostic_jump(-1), 'Prev Diagnostic message')
@@ -48,4 +48,4 @@ map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
 
 map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
-map('n', '<leader>o', 'gF', 'Open file under cursor', { silent = true })
+map('n', '<leader>o', ':sp<CR>gF', 'Open file under cursor', { silent = true })

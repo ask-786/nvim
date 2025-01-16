@@ -21,7 +21,10 @@ return {
 		formatters_by_ft = vim.tbl_deep_extend(
 			'force',
 			conform_util.create_ft_list('prettier', conform_util.prettier_fts),
-			{ lua = { 'stylua' }, python = { 'isort' } }
+			{
+				lua = { 'stylua' },
+				python = { 'isort' },
+			}
 		),
 	},
 }

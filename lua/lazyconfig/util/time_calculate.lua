@@ -54,7 +54,7 @@ local set_node_text = function(node, text)
 		start_col,
 		end_row,
 		end_col,
-		{ ' ' .. text .. ' ' }
+		{ text .. ' ' }
 	)
 end
 
