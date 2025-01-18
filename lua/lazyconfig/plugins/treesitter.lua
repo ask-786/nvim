@@ -1,6 +1,3 @@
-local calculate_time = require('lazyconfig.util.time_calculate').calculate_time
-local map = require('lazyconfig.util').map_with_desc
-
 local config = function()
 	local configs = require('nvim-treesitter.configs')
 
@@ -23,9 +20,6 @@ local config = function()
 			},
 		},
 	})
-
-	--TODO: to be removed
-	map('n', '<leader>total', calculate_time, 'Calculate total time')
 end
 
 return {

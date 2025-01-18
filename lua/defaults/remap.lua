@@ -1,4 +1,6 @@
 local map = require('lazyconfig.util').map_with_desc
+local calculate_time = require('lazyconfig.util.time_calculate').calculate_time
+
 vim.g.mapleader = ' '
 
 ---@param count integer
@@ -49,3 +51,6 @@ map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
 
 map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
 map('n', '<leader>o', ':sp<CR>gF', 'Open file under cursor', { silent = true })
+
+--TODO: to be removed
+map('n', '<leader>total', calculate_time, 'Calculate total time')
