@@ -38,13 +38,18 @@ local function friendly_snippets_config()
 	from_vscode.load_standalone({ path = '.vscode/ocw-v35.code-snippets' })
 end
 
+local deps = {
+	{
+		'rafamadriz/friendly-snippets',
+		config = friendly_snippets_config,
+	},
+}
+
 return {
 	{
 		'L3MON4D3/LuaSnip',
 		build = 'make install_jsregexp',
-		dependencies = {
-			{ 'rafamadriz/friendly-snippets', config = friendly_snippets_config },
-		},
+		dependencies = deps,
 		config = luasnip_config,
 	},
 }
