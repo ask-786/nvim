@@ -26,7 +26,7 @@ M.lsp_highlight = function(event)
 	end
 
 	local highlight_augroup =
-		vim.api.nvim_create_augroup('ask-lsp-highlight', { clear = false })
+		vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
 
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		buffer = event.buf,
@@ -41,11 +41,11 @@ M.lsp_highlight = function(event)
 	})
 
 	vim.api.nvim_create_autocmd('LspDetach', {
-		group = vim.api.nvim_create_augroup('ask-lsp-detach', { clear = true }),
+		group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
 		callback = function(event2)
 			vim.lsp.buf.clear_references()
 			vim.api.nvim_clear_autocmds({
-				group = 'ask-lsp-highlight',
+				group = 'lsp-highlight',
 				buffer = event2.buf,
 			})
 		end,
