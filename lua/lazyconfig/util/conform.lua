@@ -16,6 +16,7 @@ M.prettier_fts = {
 
 ---@param formatter string
 ---@param filetypes string[]
+---@return table<string, string[]>
 M.create_ft_list = function(formatter, filetypes)
 	local results = {}
 	for _, ft in ipairs(filetypes) do

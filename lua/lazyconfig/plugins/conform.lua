@@ -17,6 +17,8 @@ return {
 		notify_on_error = false,
 		default_format_opts = {
 			lsp_format = 'fallback',
+			stop_after_first = true,
+			timeout_ms = 1000,
 			async = true,
 		},
 		formatters_by_ft = vim.tbl_deep_extend(
