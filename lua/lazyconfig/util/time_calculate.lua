@@ -59,6 +59,11 @@ local set_node_text = function(node, text)
 end
 
 M.calculate_time = function()
+	if vim.bo.filetype ~= 'markdown' then
+		vim.notify('It only works in markdown files', vim.log.levels.WARN)
+		return
+	end
+
 	local parsed = vim.treesitter.query.parse(
 		'markdown',
 		[[

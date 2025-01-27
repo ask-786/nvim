@@ -94,16 +94,6 @@ M.lsp_config = function()
 		},
 	})
 
-	--TODO: remove me
-	lsp_config.tailwindcss.setup({
-		on_attach = on_attach,
-		settings = {
-			tailwindCSS = {
-				rootFontSize = 14,
-			},
-		},
-	})
-
 	lsp_config.ts_ls.setup({
 		on_attach = on_attach,
 		settings = {
