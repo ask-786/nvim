@@ -13,6 +13,8 @@ return {
 			desc = '[F]ormat [F]ile',
 		},
 	},
+	--- @module 'conform'
+	--- @type conform.setupOpts
 	opts = {
 		notify_on_error = false,
 		default_format_opts = {
