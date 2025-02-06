@@ -19,4 +19,8 @@ return {
 		event = 'VeryLazy',
 		opts = {},
 	},
+	{
+		'ask-786/time-calculator.nvim',
+		opts = {},
+	},
 }
