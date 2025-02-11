@@ -1,5 +1,4 @@
 local map = require('lazyconfig.util').map_with_desc
-local json_to_typescript = require('lazyconfig.util.js-to-ts').convert
 
 vim.g.mapleader = ' '
 
@@ -51,4 +50,3 @@ map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
 
 map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
 map('n', '<leader>o', ':sp<CR>gF', 'Open file under cursor', { silent = true })
-map('n', '<leader>jt', json_to_typescript, 'JSON to TypeScript Interface')
