@@ -65,6 +65,12 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
+	local capabilities = require('blink.cmp').get_lsp_capabilities(nil, true)
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
+
 	mason_lsp_config.setup({
 		automatic_installation = false,
 		ensure_installed = { 'ts_ls', 'lua_ls' },
@@ -72,6 +78,7 @@ M.lsp_config = function()
 			function(server_name)
 				local server = lsp_config[server_name] or {}
 				server.on_attach = on_attach
+				server.capabilities = capabilities
 				lsp_config[server_name].setup(server)
 			end,
 		},
@@ -79,10 +86,12 @@ M.lsp_config = function()
 
 	lsp_config.dartls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 	})
 
 	lsp_config.angularls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			angular = {
 				forceStrictTemplates = true,
@@ -96,6 +105,7 @@ M.lsp_config = function()
 
 	lsp_config.ts_ls.setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			completions = {
 				completeFunctionCalls = true,
