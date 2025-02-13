@@ -1,24 +1,17 @@
 return {
-	'catppuccin/nvim',
-	name = 'catppuccin',
+	'folke/tokyonight.nvim',
 	lazy = false,
 	priority = 1000,
 	cmd = function()
-		vim.cmd.colorscheme('catppuccin')
+		vim.cmd.colorscheme('tokyonight-moon')
 	end,
 	opts = {
-		flavour = 'mocha',
-		transparent_background = true,
-		custom_highlights = function(colors)
-			return {
-				CursorLine = { bg = colors.mantle },
-			}
-		end,
-		integrations = {
-			diffview = true,
-			harpoon = true,
-			mason = true,
-			fidget = true,
+		transparent = true,
+		styles = {
+			comments = { italic = true },
+			keywords = { italic = true },
+			sidebars = 'transparent',
+			floats = 'transparent',
 		},
 	},
 }
