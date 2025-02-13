@@ -35,19 +35,19 @@ M.select_provider_with_chain_by_default = function()
 end
 
 M.customize_fold_text_handler = function(
-	virtText,
+	virt_text,
 	lnum,
-	endLnum,
+	end_lnum,
 	width,
 	truncate
 )
 	local new_virt_text = {}
-	local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+	local suffix = (' 󰁂 %d '):format(end_lnum - lnum)
 	local suf_width = vim.fn.strdisplaywidth(suffix)
 	local target_width = width - suf_width
 	local cur_width = 0
 
-	for _, chunk in ipairs(virtText) do
+	for _, chunk in ipairs(virt_text) do
 		local chunk_text = chunk[1]
 		local chunk_width = vim.fn.strdisplaywidth(chunk_text)
 

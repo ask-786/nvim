@@ -1,3 +1,5 @@
+local map = require('lazyconfig.util.init').map_with_desc
+
 return {
 	'kevinhwang91/nvim-ufo',
 	dependencies = { 'kevinhwang91/promise-async' },
@@ -7,8 +9,9 @@ return {
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
 
-		vim.keymap.set('n', '<leader>fl', 'zc')
-		vim.keymap.set('n', '<leader>lf', 'zo')
+		map('n', '<leader>fl', 'zc', 'Close Fold')
+		map('n', '<leader>lf', 'zo', 'Open Fold')
+		map('n', '<leader>fL', require('ufo').openAllFolds, 'Close All Fold')
 
 		local handler = require('lazyconfig.util.ufo').customize_fold_text_handler
 		local provider =
