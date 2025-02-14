@@ -24,6 +24,6 @@ require('lazy').setup('lazyconfig/plugins', {
 		notify = false,
 	},
 	ui = {
-		border = 'rounded',
+		border = 'single',
 	},
 })

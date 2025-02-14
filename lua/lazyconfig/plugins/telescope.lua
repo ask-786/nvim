@@ -1,40 +1,7 @@
 local map = require('lazyconfig.util').map_with_desc
 local live_grep = require('lazyconfig.util.telescope').live_multigrep
-
-local get_visual_selection_text = function()
-	local _, srow, scol = unpack(vim.fn.getpos('v'))
-	local _, erow, ecol = unpack(vim.fn.getpos('.'))
-
-	-- Visual line mode
-	if vim.fn.mode() == 'V' then
-		if srow > erow then
-			return table.concat(
-				vim.api.nvim_buf_get_lines(0, erow - 1, srow, true),
-				'\n'
-			)
-		end
-
-		return table.concat(
-			vim.api.nvim_buf_get_lines(0, srow - 1, erow, true),
-			'\n'
-		)
-	end
-
-	-- Regular visual mode
-	if vim.fn.mode() == 'v' then
-		if srow < erow or (srow == erow and scol <= ecol) then
-			return table.concat(
-				vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {}),
-				'\n'
-			)
-		end
-
-		return table.concat(
-			vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {}),
-			'\n'
-		)
-	end
-end
+local get_visual_selection_text =
+	require('lazyconfig.util.telescope').get_visual_selection_text
 
 local config = function()
 	local builtin = require('telescope.builtin')
@@ -94,6 +61,7 @@ local config = function()
 		},
 		defaults = {
 			file_ignore_patterns = { 'node_modules', '.git/' },
+			borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
 			mappings = {
 				i = {
 					['<M-j>'] = 'results_scrolling_left',
@@ -122,7 +90,7 @@ return {
 		'nvim-telescope/telescope-ui-select.nvim',
 		{
 			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make'
+			build = 'make',
 		},
 	},
 	config = config,

@@ -13,7 +13,7 @@ local opts = {
 		['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 	},
 	appearance = { use_nvim_cmp_as_default = true },
-	signature = { enabled = true, window = { border = 'rounded' } },
+	signature = { enabled = true, window = { border = 'single' } },
 	sources = {
 		default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 		cmdline = {},
@@ -28,7 +28,7 @@ local opts = {
 		},
 	},
 	completion = {
-		menu = { auto_show = true, border = 'rounded' },
+		menu = { auto_show = true, border = 'single' },
 		list = {
 			selection = {
 				preselect = false,
@@ -39,7 +39,7 @@ local opts = {
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 200,
-			window = { border = 'rounded' },
+			window = { border = 'single' },
 		},
 	},
 	snippets = { preset = 'luasnip' },
