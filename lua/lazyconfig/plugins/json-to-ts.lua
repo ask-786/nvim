@@ -4,6 +4,6 @@ return {
 	'ask-786/json-to-ts.nvim',
 	config = function()
 		local json_to_ts = require('json-to-ts')
-		map('n', '<leader>jt', json_to_ts.convert, 'Convert JSON to TS')
+		map('n', '<leader>jt', json_to_ts.generate, 'Convert JSON to TS')
 	end,
 }
