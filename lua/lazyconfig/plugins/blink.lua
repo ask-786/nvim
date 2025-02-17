@@ -14,9 +14,9 @@ local opts = {
 	},
 	appearance = { use_nvim_cmp_as_default = true },
 	signature = { enabled = true, window = { border = 'single' } },
+	cmdline = { sources = {} },
 	sources = {
 		default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
-		cmdline = {},
 		providers = {
 			dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
 			lazydev = {
