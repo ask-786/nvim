@@ -11,6 +11,6 @@ return {
 	{
 		'williamboman/mason.nvim',
 		lazy = false,
-		opts = { ui = { border = 'single' } },
+		opts = { ui = { border = 'rounded' } },
 	},
 }

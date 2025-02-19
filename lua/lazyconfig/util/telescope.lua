@@ -57,7 +57,6 @@ M.live_multigrep = function(opts)
 			prompt_title = 'Multi Grep',
 			hidden = true,
 			finder = finder,
-			borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
 			previewer = conf.grep_previewer(opts),
 			sorter = require('telescope.sorters').empty(),
 		})

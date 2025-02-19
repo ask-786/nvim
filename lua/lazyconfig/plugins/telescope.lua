@@ -61,7 +61,6 @@ local config = function()
 		},
 		defaults = {
 			file_ignore_patterns = { 'node_modules', '.git/' },
-			borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
 			mappings = {
 				i = {
 					['<M-j>'] = 'results_scrolling_left',

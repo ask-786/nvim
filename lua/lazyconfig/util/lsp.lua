@@ -61,7 +61,7 @@ M.lsp_config = function()
 	---@diagnostic disable-next-line: duplicate-set-field
 	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 		opts = opts or {}
-		opts.border = opts.border or 'single'
+		opts.border = opts.border or 'rounded'
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 

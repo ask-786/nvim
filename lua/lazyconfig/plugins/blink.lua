@@ -13,10 +13,14 @@ local opts = {
 		['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 	},
 	appearance = { use_nvim_cmp_as_default = true },
-	signature = { enabled = true, window = { border = 'single' } },
+	signature = { enabled = true, window = { border = 'rounded' } },
 	cmdline = { sources = {} },
 	sources = {
-		default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
+		default = { 'lsp', 'path', 'snippets', 'buffer' },
+		per_filetype = {
+			sql = { 'snippets', 'dadbod', 'buffer' },
+			lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+		},
 		providers = {
 			dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
 			lazydev = {
@@ -28,7 +32,7 @@ local opts = {
 		},
 	},
 	completion = {
-		menu = { auto_show = true, border = 'single' },
+		menu = { auto_show = true, border = 'rounded' },
 		list = {
 			selection = {
 				preselect = false,
@@ -39,7 +43,7 @@ local opts = {
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 200,
-			window = { border = 'single' },
+			window = { border = 'rounded' },
 		},
 	},
 	snippets = { preset = 'luasnip' },
