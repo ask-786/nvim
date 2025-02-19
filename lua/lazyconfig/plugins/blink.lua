@@ -14,7 +14,7 @@ local opts = {
 	},
 	appearance = { use_nvim_cmp_as_default = true },
 	signature = { enabled = true, window = { border = 'rounded' } },
-	cmdline = { sources = {} },
+	cmdline = { enabled = false },
 	sources = {
 		default = { 'lsp', 'path', 'snippets', 'buffer' },
 		per_filetype = {
