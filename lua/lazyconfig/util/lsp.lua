@@ -81,6 +81,8 @@ M.lsp_config = function()
 				server.capabilities = capabilities
 				lsp_config[server_name].setup(server)
 			end,
+			ts_ls = function() end,
+			angularls = function() end,
 		},
 	})
 
