@@ -3,6 +3,7 @@ return {
 	{ 'nvim-tree/nvim-web-devicons' },
 	{ 'LunarVim/bigfile.nvim' },
 	{ 'tpope/vim-sleuth' },
+	{ 'echasnovski/mini.ai', version = '*' },
 	{
 		'windwp/nvim-autopairs',
 		event = 'InsertEnter',
