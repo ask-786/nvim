@@ -83,7 +83,6 @@ M.lsp_config = function()
 			end,
 			ts_ls = function() end,
 			angularls = function() end,
-			dartls = function() end,
 		},
 	})
 
