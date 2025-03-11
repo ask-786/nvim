@@ -87,10 +87,7 @@ return {
 	'nvim-telescope/telescope.nvim',
 	dependencies = {
 		'nvim-telescope/telescope-ui-select.nvim',
-		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make',
-		},
+		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 	},
 	config = config,
 }

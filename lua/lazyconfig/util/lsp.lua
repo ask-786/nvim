@@ -2,6 +2,8 @@ local map_with_desc = require('lazyconfig.util').map_with_desc
 
 local M = {}
 
+local noop = function() end
+
 ---On Attach Function For LSPs
 local function on_attach(_, bufnr)
 	local map = function(mode, keys, action, desc)
@@ -81,8 +83,8 @@ M.lsp_config = function()
 				server.capabilities = capabilities
 				lsp_config[server_name].setup(server)
 			end,
-			ts_ls = function() end,
-			angularls = function() end,
+			ts_ls = noop,
+			angularls = noop,
 		},
 	})
 
