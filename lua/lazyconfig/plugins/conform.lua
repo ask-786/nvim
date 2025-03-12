@@ -1,5 +1,5 @@
 local prettier_fts = require('lazyconfig.util.conform').prettier_fts
-local create_ft_list = require('lazyconfig.util.conform').create_ft_list
+local ft_factory = require('lazyconfig.util.conform').ft_list_factory
 
 return {
 	'stevearc/conform.nvim',
@@ -25,7 +25,7 @@ return {
 		},
 		formatters_by_ft = vim.tbl_deep_extend(
 			'force',
-			create_ft_list('prettier', prettier_fts),
+			ft_factory('prettier', prettier_fts),
 			{
 				lua = { 'stylua' },
 				python = { 'isort' },
