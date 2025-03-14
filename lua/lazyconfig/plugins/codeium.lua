@@ -1,5 +1,5 @@
 return {
-	'ask-786/codeium.nvim',
+	'exafunction/codeium.nvim',
 	opts = {
 		enable_cmp_source = false,
 		quiet = true,
