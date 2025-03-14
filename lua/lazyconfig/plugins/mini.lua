@@ -2,7 +2,7 @@ return {
 	{
 		'echasnovski/mini.ai',
 		version = '*',
-		opts = {},
+		opts = { n_lines = 200 },
 		event = 'InsertEnter',
 	},
 	{
