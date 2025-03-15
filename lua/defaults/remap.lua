@@ -2,12 +2,17 @@ local map = require('lazyconfig.util').map_with_desc
 
 vim.g.mapleader = ' '
 
+local Diagnostics = {
+	ALL = 0,
+	ERROR = 1,
+}
+
 ---@param count integer
----@param error_only? boolean
+---@param type? integer
 ---@return function
-local function diagnostic_jump(count, error_only)
+local function diagnostic_jump(count, type)
 	return function()
-		if error_only == true then
+		if type == Diagnostics.ERROR then
 			vim.diagnostic.jump({
 				count = count,
 				severity = vim.diagnostic.severity.ERROR,
@@ -29,9 +34,7 @@ map('n', '<C-u>', '<C-u>zz', 'Jump Half Page [U]pwards')
 map('n', '<leader>vs', vim.cmd.vsplit, 'Split screen Vertically')
 map('n', '<leader>hs', vim.cmd.split, 'Split screen Horizontally')
 
-map('n', '<A-t>', function()
-	vim.cmd.tabnew('.')
-end, 'Create new Tab')
+map('n', '<A-t>', function() vim.cmd.tabnew('.') end, 'Create new Tab')
 map('n', '<A-n>', vim.cmd.tabnext, 'Jump to next Tab')
 map('n', '<A-p>', vim.cmd.tabprevious, 'Jump to previous Tab')
 
@@ -40,10 +43,10 @@ map('n', '<leader>Y', [["+Y]], '[Y]ank to System Clipboard')
 
 map('n', '<leader>tsp', '<cmd>:InspectTree<CR>', 'Tree Sitter Playground')
 
-map('n', '[d', diagnostic_jump(1), 'Next Diagnostic message')
-map('n', ']d', diagnostic_jump(-1), 'Prev Diagnostic message')
-map('n', '[ed', diagnostic_jump(1, true), 'Next Diagnostic Error')
-map('n', ']ed', diagnostic_jump(-1, true), 'Prev Diagnostic Error')
+map('n', '[d', diagnostic_jump(1, Diagnostics.ALL), 'Next Diagnostic message')
+map('n', ']d', diagnostic_jump(-1, Diagnostics.ALL), 'Prev Diagnostic message')
+map('n', '[ed', diagnostic_jump(1, Diagnostics.ERROR), 'Next Diagnostic Error')
+map('n', ']ed', diagnostic_jump(-1, Diagnostics.ERROR), 'Prev Diagnostic Error')
 
 map('n', '<leader>e', vim.diagnostic.open_float, 'Show Diagnostics')
 map('n', '<leader>dg', vim.diagnostic.setqflist, '[D]ia[G]nostics')
