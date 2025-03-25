@@ -4,6 +4,5 @@ return {
 	keys = {
 		{ '<leader>gs', ':Git<CR>', 'n' },
 		{ '<leader>gl', ':Git log<CR>', 'n' },
-		{ '<leader>gB', ':Git blame<CR>', 'n' },
 	},
 }

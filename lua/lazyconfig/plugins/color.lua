@@ -1,17 +1,14 @@
 return {
-	'folke/tokyonight.nvim',
+	'rose-pine/neovim',
+	name = 'rose-pine',
 	lazy = false,
 	priority = 1000,
 	cmd = function()
-		vim.cmd.colorscheme('tokyonight-moon')
+		vim.cmd.colorscheme('rose-pine-moon')
 	end,
 	opts = {
-		transparent = true,
 		styles = {
-			comments = { italic = true },
-			keywords = { italic = true },
-			sidebars = 'transparent',
-			floats = 'transparent',
+			transparency = true,
 		},
 	},
 }

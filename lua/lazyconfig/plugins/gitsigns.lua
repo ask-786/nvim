@@ -29,15 +29,23 @@ local on_attach = function(bufnr)
 	map('n', '<leader>gR', gs.reset_buffer, 'Reset Buffer')
 	map('n', '<leader>gk', gs.preview_hunk, 'Preivew Hunk')
 	map('n', '<leader>gd', gs.diffthis, 'Diff File')
+
 	map('v', '<leader>gS', function()
 		gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
 	end, 'Stage Hunk')
+
 	map('v', '<leader>gu', function()
 		gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
 	end, 'Reset Hunk')
+
 	map('n', '<leader>gb', function()
 		gs.blame_line({ full = true })
 	end, 'Blame Line')
+
+	map('n', '<leader>gB', function()
+		gs.blame({ full = true })
+	end, 'Blame File')
+
 	map('n', '<leader>gD', function()
 		gs.diffthis('~')
 	end, 'Diff File')
