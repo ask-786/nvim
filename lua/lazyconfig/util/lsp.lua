@@ -67,11 +67,14 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
-	local capabilities = require('blink.cmp').get_lsp_capabilities(nil, true)
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
+	local capabilities = require('blink.cmp').get_lsp_capabilities({
+		textDocument = {
+			foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			},
+		},
+	}, true)
 
 	mason_lsp_config.setup({
 		automatic_installation = false,
