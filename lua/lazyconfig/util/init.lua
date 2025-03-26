@@ -13,4 +13,16 @@ M.map_with_desc = function(mode, lhs, rhs, desc, extra_opts)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+M.open_parallel_file = function(curr_ext, sub_ext)
+	return function()
+		local path =
+			vim.fn.expand('%'):gsub('%.' .. curr_ext .. '$', '.' .. sub_ext)
+		if vim.fn.findfile(path, '**/') ~= '' then
+			vim.cmd('vsplit ' .. path)
+		else
+			vim.notify('Cound\'nt find file', vim.log.levels.WARN)
+		end
+	end
+end
+
 return M
