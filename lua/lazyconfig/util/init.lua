@@ -18,7 +18,9 @@ M.open_parallel_file = function(curr_ext, sub_ext)
 		local path =
 			vim.fn.expand('%'):gsub('%.' .. curr_ext .. '$', '.' .. sub_ext)
 		if vim.fn.findfile(path, '**/') ~= '' then
-			vim.cmd('vsplit ' .. path)
+			vim.cmd('vsplit')
+			vim.cmd('wincmd l')
+			vim.cmd('edit ' .. path)
 		else
 			vim.notify('Cound\'nt find file', vim.log.levels.WARN)
 		end
