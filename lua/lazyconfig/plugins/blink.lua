@@ -20,6 +20,7 @@ local opts = {
 		per_filetype = {
 			sql = { 'snippets', 'dadbod', 'buffer' },
 			lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+			gitcommit = { 'snippets', 'buffer' },
 		},
 		providers = {
 			dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
@@ -28,7 +29,7 @@ local opts = {
 				module = 'lazydev.integrations.blink',
 				score_offset = 10,
 			},
-			lsp = { fallbacks = {}, score_offset = 5, async = true },
+			lsp = { fallbacks = {}, score_offset = 5 },
 		},
 	},
 	completion = {
