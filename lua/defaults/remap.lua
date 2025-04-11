@@ -24,7 +24,7 @@ local function diagnostic_jump(count, type)
 	end
 end
 
-map('n', '<leader>pv', vim.cmd.Ex, 'Ex')
+map('n', '<leader>pv', vim.cmd.Oil, 'Oil')
 
 map('v', 'J', ':m \'>+1<CR>gv=gv', 'Move Selected Lines Downwards')
 map('v', 'K', ':m \'<-2<CR>gv=gv', 'Move Selected Lines Upwards')
