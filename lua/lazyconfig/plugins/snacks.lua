@@ -9,6 +9,6 @@ return {
 			enabled = true,
 			notify = false,
 		},
-		image = { enabled = true,  },
+		image = { enabled = true },
 	},
 }
