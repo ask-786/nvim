@@ -14,6 +14,16 @@ return {
 	---@module 'oil'
 	---@type oil.SetupOpts
 	opts = {
+		keymaps = {
+			['<CR>'] = 'actions.select',
+			['<C-t>'] = { 'actions.select', opts = { tab = true } },
+			['<C-p>'] = 'actions.preview',
+			['<C-c>'] = { 'actions.close', mode = 'n' },
+			['<C-r>'] = 'actions.refresh',
+			['-'] = { 'actions.parent', mode = 'n' },
+			['_'] = { 'actions.open_cwd', mode = 'n' },
+		},
+		use_default_keymaps = false,
 		view_options = {
 			show_hidden = true,
 			winbar = '%!v:lua.get_oil_winbar()',
