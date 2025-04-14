@@ -29,7 +29,7 @@ local opts = {
 				module = 'lazydev.integrations.blink',
 				score_offset = 10,
 			},
-			lsp = { fallbacks = {}, score_offset = 5, async = true },
+			lsp = { fallbacks = {}, async = true },
 		},
 	},
 	completion = {
