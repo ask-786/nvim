@@ -81,6 +81,7 @@ M.lsp_config = function()
 	mason_lsp_config.setup({
 		automatic_installation = false,
 		ensure_installed = { 'ts_ls', 'lua_ls' },
+
 		handlers = {
 			function(server_name)
 				local server = lsp_config[server_name] or {}
@@ -102,13 +103,7 @@ M.lsp_config = function()
 		on_attach = M.on_attach,
 		capabilities = M.capabilities(),
 		settings = {
-			angular = {
-				forceStrictTemplates = true,
-				suggest = {
-					includeAutomaticOptionalChainCompletions = true,
-					includeCompletionsWithSnippetText = true,
-				},
-			},
+			angular = { forceStrictTemplates = true },
 		},
 	})
 end
