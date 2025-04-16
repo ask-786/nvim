@@ -8,8 +8,5 @@ return {
 		behaviour = { enable_cursor_planning_mode = true },
 	},
 	build = 'make',
-	dependencies = {
-		'stevearc/dressing.nvim',
-		'MunifTanjim/nui.nvim',
-	},
+	dependencies = { 'MunifTanjim/nui.nvim' },
 }

@@ -5,7 +5,7 @@ local M = {}
 local noop = function() end
 
 ---On Attach Function For LSPs
-local function on_attach(_, bufnr)
+M.on_attach = function(_, bufnr)
 	local map = function(mode, keys, action, desc)
 		local opts = { buffer = bufnr, remap = false }
 		map_with_desc(mode, keys, action, desc, opts)
@@ -17,6 +17,17 @@ local function on_attach(_, bufnr)
 	map('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 	map('n', '<leader>rn', vim.lsp.buf.rename, '[R]ename')
 	map('i', '<C-a>', vim.lsp.buf.signature_help, 'Signature Help')
+end
+
+M.capabilities = function()
+	return require('blink.cmp').get_lsp_capabilities({
+		textDocument = {
+			foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			},
+		},
+	}, true)
 end
 
 M.lsp_highlight = function(event)
@@ -67,23 +78,14 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
-	local capabilities = require('blink.cmp').get_lsp_capabilities({
-		textDocument = {
-			foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			},
-		},
-	}, true)
-
 	mason_lsp_config.setup({
 		automatic_installation = false,
 		ensure_installed = { 'ts_ls', 'lua_ls' },
 		handlers = {
 			function(server_name)
 				local server = lsp_config[server_name] or {}
-				server.on_attach = on_attach
-				server.capabilities = capabilities
+				server.on_attach = M.on_attach
+				server.capabilities = M.capabilities()
 				lsp_config[server_name].setup(server)
 			end,
 			ts_ls = noop,
@@ -92,13 +94,13 @@ M.lsp_config = function()
 	})
 
 	lsp_config.dartls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
+		on_attach = M.on_attach,
+		capabilities = M.capabilities(),
 	})
 
 	lsp_config.angularls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
+		on_attach = M.on_attach,
+		capabilities = M.capabilities(),
 		settings = {
 			angular = {
 				forceStrictTemplates = true,
@@ -106,16 +108,6 @@ M.lsp_config = function()
 					includeAutomaticOptionalChainCompletions = true,
 					includeCompletionsWithSnippetText = true,
 				},
-			},
-		},
-	})
-
-	lsp_config.ts_ls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-			completions = {
-				completeFunctionCalls = true,
 			},
 		},
 	})
