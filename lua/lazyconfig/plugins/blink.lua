@@ -29,7 +29,7 @@ local opts = {
 				module = 'lazydev.integrations.blink',
 				score_offset = 10,
 			},
-			lsp = { fallbacks = {}, async = true },
+			lsp = { async = true },
 		},
 	},
 	completion = {
@@ -42,17 +42,18 @@ local opts = {
 		},
 		trigger = { show_on_insert_on_trigger_character = false },
 		documentation = {
-			auto_show = true,
+			auto_show = false,
 			auto_show_delay_ms = 200,
 			window = { border = 'rounded' },
 		},
 	},
+	fuzzy = { implementation = 'prefer_rust_with_warning' },
 	snippets = { preset = 'luasnip' },
 }
 
 return {
 	'saghen/blink.cmp',
-	dependencies = { 'L3MON4D3/LuaSnip' },
-	version = '*',
+	dependencies = { 'L3MON4D3/LuaSnip', 'rafamadriz/friendly-snippets' },
+	version = '1.*',
 	opts = opts,
 }

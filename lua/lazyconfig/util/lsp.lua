@@ -27,7 +27,7 @@ M.capabilities = function()
 				lineFoldingOnly = true,
 			},
 		},
-	}, true)
+	})
 end
 
 M.lsp_highlight = function(event)
