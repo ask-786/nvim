@@ -52,3 +52,17 @@ This repository contains a modern Neovim configuration written in Lua, optimized
 ```bash
 git clone https://github.com/Ask-786/nvim ~/.config/nvim
 ```
+
+2. Start Neovim and let it install plugins automatically:
+
+```bash
+nvim
+```
+
+## Custom Plugins
+
+This configuration includes several custom plugins:
+- `ask-786/time-calculator.nvim`: For time calculations
+- `ask-786/emojis.nvim`: Emoji support
+
+Additional mappings are available for telescope, git operations, and other tools.
