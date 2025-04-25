@@ -2,11 +2,12 @@ return {
 	'yetone/avante.nvim',
 	event = 'VeryLazy',
 	version = false,
-	opts = {
-		provider = 'gemini',
-		cursor_applying_provider = 'gemini',
-		behaviour = { enable_cursor_planning_mode = true },
-	},
+	opts = { provider = 'claude' },
 	build = 'make',
-	dependencies = { 'MunifTanjim/nui.nvim' },
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter',
+		'stevearc/dressing.nvim',
+		'nvim-lua/plenary.nvim',
+		'MunifTanjim/nui.nvim',
+	},
 }
