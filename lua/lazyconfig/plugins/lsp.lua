@@ -5,7 +5,7 @@ return {
 		'neovim/nvim-lspconfig',
 		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
 		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = { 'saghen/blink.cmp' },
+		dependencies = { 'hrsh7th/cmp-nvim-lsp', },
 		config = util.lsp_config,
 	},
 	{
