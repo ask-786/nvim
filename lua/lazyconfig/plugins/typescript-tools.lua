@@ -1,5 +1,4 @@
 local on_attach = require('lazyconfig.util.lsp').on_attach
-local capabilities = require('lazyconfig.util.lsp').capabilities
 
 return {
 	'pmizio/typescript-tools.nvim',
@@ -10,7 +9,6 @@ return {
 	},
 	opts = {
 		on_attach = on_attach,
-		capabilities = capabilities(),
 		handlers = {},
 	},
 }

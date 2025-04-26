@@ -19,17 +19,6 @@ M.on_attach = function(_, bufnr)
 	map('i', '<C-a>', vim.lsp.buf.signature_help, 'Signature Help')
 end
 
-M.capabilities = function()
-	return require('blink.cmp').get_lsp_capabilities({
-		textDocument = {
-			foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			},
-		},
-	})
-end
-
 M.lsp_highlight = function(event)
 	-- When you move your cursor, the highlights will be cleared (the second autocommand).
 	local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -71,6 +60,17 @@ M.lsp_config = function()
 
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
+	vim.lsp.config('*', {
+		capabilities = {
+			textDocument = {
+				foldingRange = {
+					dynamicRegistration = false,
+					lineFoldingOnly = true,
+				},
+			},
+		},
+	})
+
 	---@diagnostic disable-next-line: duplicate-set-field
 	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 		opts = opts or {}
@@ -86,7 +86,6 @@ M.lsp_config = function()
 			function(server_name)
 				local server = lsp_config[server_name] or {}
 				server.on_attach = M.on_attach
-				server.capabilities = M.capabilities()
 				lsp_config[server_name].setup(server)
 			end,
 			ts_ls = noop,
@@ -94,14 +93,10 @@ M.lsp_config = function()
 		},
 	})
 
-	lsp_config.dartls.setup({
-		on_attach = M.on_attach,
-		capabilities = M.capabilities(),
-	})
+	lsp_config.dartls.setup({ on_attach = M.on_attach })
 
 	lsp_config.angularls.setup({
 		on_attach = M.on_attach,
-		capabilities = M.capabilities(),
 		settings = {
 			angular = { forceStrictTemplates = true },
 		},
