@@ -1,5 +1,3 @@
-local on_attach = require('lazyconfig.util.lsp').on_attach
-
 return {
 	'pmizio/typescript-tools.nvim',
 	dependencies = {
@@ -8,7 +6,6 @@ return {
 		'saghen/blink.cmp',
 	},
 	opts = {
-		on_attach = on_attach,
 		handlers = {},
 	},
 }

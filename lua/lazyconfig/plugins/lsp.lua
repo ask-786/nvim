@@ -13,4 +13,11 @@ return {
 		lazy = false,
 		opts = { ui = { border = 'rounded' } },
 	},
+	{
+		'williamboman/mason-lspconfig.nvim',
+		opts = {
+			automatic_installation = false,
+			ensure_installed = { 'ts_ls', 'lua_ls' },
+		},
+	},
 }

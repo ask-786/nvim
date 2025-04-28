@@ -55,12 +55,12 @@ M.lsp_highlight = function(event)
 end
 
 M.lsp_config = function()
-	local lsp_config = require('lspconfig')
 	local mason_lsp_config = require('mason-lspconfig')
 
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
 	vim.lsp.config('*', {
+		on_attach = M.on_attach(),
 		capabilities = {
 			textDocument = {
 				foldingRange = {
@@ -78,29 +78,18 @@ M.lsp_config = function()
 		return original_open_floating_preview(contents, syntax, opts, ...)
 	end
 
-	mason_lsp_config.setup({
-		automatic_installation = false,
-		ensure_installed = { 'ts_ls', 'lua_ls' },
-
-		handlers = {
-			function(server_name)
-				local server = lsp_config[server_name] or {}
-				server.on_attach = M.on_attach
-				lsp_config[server_name].setup(server)
-			end,
-			ts_ls = noop,
-			angularls = noop,
-		},
-	})
-
-	lsp_config.dartls.setup({ on_attach = M.on_attach })
-
-	lsp_config.angularls.setup({
+	vim.lsp.config('angularls', {
 		on_attach = M.on_attach,
 		settings = {
 			angular = { forceStrictTemplates = true },
 		},
 	})
+
+	local servers = vim.tbl_filter(function(server)
+		return server ~= 'ts_ls'
+	end, mason_lsp_config.get_installed_servers())
+
+	vim.lsp.enable(vim.tbl_extend('force', servers, { 'dartls' }))
 end
 
 return M
