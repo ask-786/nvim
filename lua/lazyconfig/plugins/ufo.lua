@@ -10,9 +10,9 @@ return {
 		vim.o.foldenable = true
 
 		map('n', '<leader>fl', 'zc', 'Close Fold')
-		map('n', '<leader>fL', require('ufo').openAllFolds, 'Close All Fold')
+		map('n', '<leader>fL', require('ufo').closeAllFolds, 'Close All Fold')
 		map('n', '<leader>lf', 'zo', 'Open Fold')
-		map('n', '<leader>lF', require('ufo').closeAllFolds, 'Close All Fold')
+		map('n', '<leader>lF', require('ufo').openAllFolds, 'Open All Fold')
 
 		local handler = require('lazyconfig.util.ufo').customize_fold_text_handler
 		local provider =
