@@ -10,7 +10,7 @@ return {
 				enabled = true,
 				key_bindings = {
 					accept = '<Tab>',
-					accept_word = '<Right>',
+					accept_word = '<C-l>',
 					accept_line = false,
 					clear = false,
 					next = '<M-]>',
