@@ -6,10 +6,5 @@ return {
 	{ 'ask-786/Comment.nvim', event = 'BufEnter', opts = {} },
 	{ 'ask-786/emojis.nvim', opts = {} },
 	{ 'kylechui/nvim-surround', version = '*', event = 'InsertEnter', opts = {} },
-	{
-		'echasnovski/mini.pairs',
-		version = '*',
-		opts = {},
-		event = 'InsertEnter',
-	},
+	{ 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
 }
