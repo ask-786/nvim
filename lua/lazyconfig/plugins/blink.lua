@@ -29,6 +29,7 @@ local opts = {
 				module = 'lazydev.integrations.blink',
 				score_offset = 10,
 			},
+			lsp = { fallbacks = {} },
 		},
 	},
 	completion = {

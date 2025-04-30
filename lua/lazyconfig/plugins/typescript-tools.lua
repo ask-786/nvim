@@ -5,7 +5,5 @@ return {
 		'neovim/nvim-lspconfig',
 		'saghen/blink.cmp',
 	},
-	opts = {
-		handlers = {},
-	},
+	opts = {},
 }
