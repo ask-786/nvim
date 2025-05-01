@@ -33,7 +33,17 @@ local opts = {
 		},
 	},
 	completion = {
-		menu = { auto_show = true, border = 'rounded' },
+		menu = {
+			auto_show = true,
+			border = 'rounded',
+			draw = {
+				columns = {
+					{ 'kind_icon', gap = 1 },
+					{ 'label', 'label_description', gap = 1 },
+					{ 'kind' },
+				},
+			},
+		},
 		list = {
 			selection = {
 				preselect = false,
