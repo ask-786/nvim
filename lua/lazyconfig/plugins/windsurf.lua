@@ -1,5 +1,5 @@
 return {
-	'ask-786/windsurf.nvim',
+	'exafunction/windsurf.nvim',
 	config = function()
 		local codeium = require('codeium')
 
