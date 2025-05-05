@@ -22,9 +22,9 @@ local luasnip_config = function(opts)
 
 	local extra_opts = { silent = true }
 
-	map({ 'i' }, '<C-K>', ls.expand, 'LuaSnip Expand', extra_opts)
-	map({ 'i', 's' }, '<C-L>', jump(ls, true), 'LuaSnip Jump Forward', extra_opts)
-	map({ 'i', 's' }, '<C-H>', jump(ls), 'LuaSnip Jump Backward', extra_opts)
+	map({ 'i' }, '<C-k>', ls.expand, 'LuaSnip Expand', extra_opts)
+	map({ 'i', 's' }, '<C-l>', jump(ls, true), 'LuaSnip Jump Forward', extra_opts)
+	map({ 'i', 's' }, '<C-h>', jump(ls), 'LuaSnip Jump Backward', extra_opts)
 
 	ls.filetype_extend('typescript', { 'tsdoc' })
 	ls.filetype_extend('javascript', { 'jsdoc' })
