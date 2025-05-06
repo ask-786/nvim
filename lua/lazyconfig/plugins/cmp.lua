@@ -24,7 +24,7 @@ local config = function()
 		mapping = {
 			['<CR>'] = cmp.mapping(function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() then
-					cmp.confirm({ select = false })
+					cmp.confirm({ select = true })
 				else
 					fallback()
 				end
