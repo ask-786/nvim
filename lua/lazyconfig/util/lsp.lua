@@ -83,11 +83,13 @@ M.lsp_config = function()
 		},
 	})
 
-	local servers = vim.tbl_filter(function(server)
-		return server ~= 'ts_ls'
-	end, mason_lsp_config.get_installed_servers())
-
-	vim.lsp.enable(vim.tbl_extend('force', servers, { 'dartls' }))
+	vim.lsp.enable(
+		vim.tbl_extend(
+			'force',
+			mason_lsp_config.get_installed_servers(),
+			{ 'dartls' }
+		)
+	)
 end
 
 return M
