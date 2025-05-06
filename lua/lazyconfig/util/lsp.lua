@@ -2,8 +2,6 @@ local map_with_desc = require('lazyconfig.util').map_with_desc
 
 local M = {}
 
-local noop = function() end
-
 ---On Attach Function For LSPs
 M.on_attach = function(_, bufnr)
 	local map = function(mode, keys, action, desc)
