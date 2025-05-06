@@ -22,7 +22,13 @@ local config = function()
 			}),
 		},
 		mapping = {
-			['<CR>'] = cmp.mapping.confirm({ select = true }),
+			['<CR>'] = cmp.mapping(function(fallback)
+				if cmp.visible() and cmp.get_selected_entry() then
+					cmp.confirm({ select = false })
+				else
+					fallback()
+				end
+			end, { 'i', 's' }),
 			['<C-p>'] = cmp.mapping(function()
 				if cmp.visible() then
 					cmp.select_prev_item({ behavior = 'insert' })
