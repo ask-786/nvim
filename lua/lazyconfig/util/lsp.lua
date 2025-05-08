@@ -53,12 +53,10 @@ M.lsp_highlight = function(event)
 end
 
 M.lsp_config = function()
-	local mason_lsp_config = require('mason-lspconfig')
-
 	local original_open_floating_preview = vim.lsp.util.open_floating_preview
 
 	vim.lsp.config('*', {
-		on_attach = M.on_attach(),
+		on_attach = M.on_attach,
 		capabilities = {
 			textDocument = {
 				foldingRange = {
@@ -83,13 +81,7 @@ M.lsp_config = function()
 		},
 	})
 
-	vim.lsp.enable(
-		vim.tbl_extend(
-			'force',
-			mason_lsp_config.get_installed_servers(),
-			{ 'dartls' }
-		)
-	)
+	vim.lsp.enable({ 'dartls' })
 end
 
 return M

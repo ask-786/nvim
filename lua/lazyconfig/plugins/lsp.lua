@@ -5,16 +5,17 @@ return {
 		'neovim/nvim-lspconfig',
 		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
 		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = { 'williamboman/mason-lspconfig.nvim', 'saghen/blink.cmp' },
+		dependencies = { 'saghen/blink.cmp' },
 		config = util.lsp_config,
 	},
 	{
-		'williamboman/mason.nvim',
+		'mason-org/mason.nvim',
 		lazy = false,
 		opts = { ui = { border = 'rounded' } },
 	},
 	{
-		'williamboman/mason-lspconfig.nvim',
+		'mason-org/mason-lspconfig.nvim',
+		dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
 		opts = {
 			automatic_installation = false,
 			ensure_installed = { 'ts_ls', 'lua_ls' },
