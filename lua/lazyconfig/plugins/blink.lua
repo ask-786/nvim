@@ -25,7 +25,7 @@ local opts = {
 			lazydev = {
 				name = 'LazyDev',
 				module = 'lazydev.integrations.blink',
-				score_offset = 10,
+				score_offset = 100,
 			},
 			lsp = { fallbacks = {}, async = true },
 		},
@@ -34,13 +34,7 @@ local opts = {
 		menu = {
 			auto_show = true,
 			border = 'rounded',
-			draw = {
-				columns = {
-					{ 'kind_icon', gap = 1 },
-					{ 'label', 'label_description', gap = 1 },
-					{ 'source_name' },
-				},
-			},
+			draw = { treesitter = { 'lsp' } },
 		},
 		list = {
 			selection = {
@@ -50,7 +44,7 @@ local opts = {
 		},
 		trigger = { show_on_insert_on_trigger_character = false },
 		documentation = {
-			auto_show = false,
+			auto_show = true,
 			auto_show_delay_ms = 200,
 			window = { border = 'rounded' },
 		},
