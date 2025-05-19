@@ -58,3 +58,8 @@ map('t', '<Esc><Esc>', [[<C-\><C-n>]], 'Escape terminal mode')
 map('n', '<leader>o', ':sp<CR>gF', 'Open file under cursor', { silent = true })
 map('n', '<leader>tem', open_parallel_file('ts', 'html'), '')
 map('n', '<leader>ty', open_parallel_file('html', 'ts'), '')
+
+-- Copy current file path
+map('n', '<leader>cp', function()
+	vim.fn.setreg('+', vim.fn.expand('%'))
+end, 'Copy Relative Path')
