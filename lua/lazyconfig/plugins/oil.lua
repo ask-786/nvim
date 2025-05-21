@@ -15,7 +15,25 @@ return {
 	---@type oil.SetupOpts
 	opts = {
 		keymaps = {
-			['<CR>'] = 'actions.select',
+			['<CR>'] = function()
+				local oil = require('oil')
+				local entry = oil.get_cursor_entry()
+				if not entry then
+					return
+				end
+
+				local abs_path = vim.fs.joinpath(oil.get_current_dir(), entry.name)
+				local cwd = vim.fn.getcwd()
+
+				local path_to_open
+				if abs_path:sub(1, #cwd) == cwd then
+					path_to_open = vim.fn.fnamemodify(abs_path, ':.')
+				else
+					path_to_open = abs_path
+				end
+
+				vim.cmd('edit ' .. vim.fn.fnameescape(path_to_open))
+			end,
 			['<C-t>'] = { 'actions.select', opts = { tab = true } },
 			['<C-p>'] = 'actions.preview',
 			['<C-c>'] = { 'actions.close', mode = 'n' },
@@ -27,6 +45,7 @@ return {
 		view_options = {
 			show_hidden = true,
 			winbar = '%!v:lua.get_oil_winbar()',
+			signcolumn = 'yes',
 		},
 	},
 	dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons

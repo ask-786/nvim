@@ -4,6 +4,7 @@ return {
 	version = false,
 	opts = { provider = 'claude' },
 	build = 'make',
+	enabled = false,
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter',
 		'stevearc/dressing.nvim',
