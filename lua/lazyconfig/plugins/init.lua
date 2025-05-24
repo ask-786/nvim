@@ -7,4 +7,5 @@ return {
 	{ 'ask-786/emojis.nvim', opts = {} },
 	{ 'kylechui/nvim-surround', version = '*', event = 'InsertEnter', opts = {} },
 	{ 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
+	{ 'windwp/nvim-ts-autotag', opts = {} },
 }

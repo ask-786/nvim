@@ -3,7 +3,9 @@ local map_with_desc = require('lazyconfig.util').map_with_desc
 local M = {}
 
 ---On Attach Function For LSPs
-M.on_attach = function(_, bufnr)
+---@param client vim.lsp.Client
+---@param bufnr number
+M.on_attach = function(client, bufnr)
 	local map = function(mode, keys, action, desc)
 		local opts = { buffer = bufnr, remap = false }
 		map_with_desc(mode, keys, action, desc, opts)
