@@ -8,8 +8,7 @@ return {
 			require('ts_context_commentstring.integrations.comment_nvim')
 		local ft = require('Comment.ft')
 
-		---@diagnostic disable-next-line: param-type-mismatch
-		ft.set('htmlangular', ft.get('html'))
+		ft.set('htmlangular', ft.get('html') or {})
 
 		---@diagnostic disable-next-line: missing-fields
 		comment.setup({
