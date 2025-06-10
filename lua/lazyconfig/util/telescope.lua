@@ -15,7 +15,7 @@ M.live_multigrep = function(opts)
 				return nil
 			end
 
-			local pieces = vim.split(prompt, '  ')
+			local pieces = vim.split(prompt, '  g:')
 
 			if not pieces[1] or pieces[1] == '' then
 				return nil
