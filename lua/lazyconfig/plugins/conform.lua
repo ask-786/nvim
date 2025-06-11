@@ -30,6 +30,7 @@ return {
 				lua = { 'stylua' },
 				python = { 'isort' },
 				c = { 'clang-format' },
+				sh = { 'shfmt' },
 			}
 		),
 	},
