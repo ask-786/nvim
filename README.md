@@ -21,7 +21,7 @@ This repository contains a modern Neovim configuration written in Lua, optimized
 - **Development Tools**:
   - Debugging with `nvim-dap`.
   - Code formatting with `conform.nvim`.
-  - Git integration via `fugitive` and `gitsigns`.
+  - Git integration via `fugitive`, `gitsigns`, and `diffview`.
   - Database management with `vim-dadbod`.
 - **UI Enhancements**:
   - Syntax highlighting with `nvim-treesitter`.
@@ -29,14 +29,18 @@ This repository contains a modern Neovim configuration written in Lua, optimized
   - Fuzzy finding with `telescope.nvim`.
   - Code folding with `nvim-ufo`.
   - Status updates with `fidget.nvim`.
+  - Better Markdown rendering with `render-markdown.nvim`.
+  - Large file handling with `snacks.nvim`.
 - **Productivity**:
   - Quick navigation with `harpoon`.
   - Undo history visualization with `undotree`.
   - Snippets support with `LuaSnip`.
-  - AI assistance with `codeium.nvim`.
+  - AI assistance with `windsurf.nvim` (powered by Codeium).
+  - AI chat integration with `avante.nvim` (powered by Claude).
   - Focus mode with `zen-mode.nvim`.
   - Code screenshots with `silicon.nvim`.
   - JSON to TypeScript conversion.
+  - Image support with `img-clip.nvim`.
 
 ## Prerequisites
 
@@ -44,6 +48,7 @@ This repository contains a modern Neovim configuration written in Lua, optimized
 - `git` installed
 - Node.js and npm (for TypeScript/JavaScript LSP)
 - (Optional) [tmux](https://github.com/tmux/tmux) for terminal navigation
+- (Optional) An Anthropic API key for Claude integration with `avante.nvim`
 
 ## Installation
 
@@ -62,7 +67,17 @@ nvim
 ## Custom Plugins
 
 This configuration includes several custom plugins:
+
 - `ask-786/time-calculator.nvim`: For time calculations
 - `ask-786/emojis.nvim`: Emoji support
+
+## Development Tools
+
+This configuration includes several developer-friendly tools:
+
+- `folke/lazydev.nvim`: Provides enhanced Lua development experience
+- `nvim-surround`: For easily manipulating surroundings (quotes, brackets, tags, etc.)
+- `nvim-autopairs`: Automatic bracket pairing
+- `nvim-ts-autotag`: Automatically close and rename HTML/JSX tags
 
 Additional mappings are available for telescope, git operations, and other tools.
