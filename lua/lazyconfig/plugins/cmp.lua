@@ -46,8 +46,14 @@ local config = function()
 			{ name = 'luasnip' },
 			{ name = 'buffer' },
 			{ name = 'path' },
-		}, {
+		}),
+	})
+
+	cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
+		sources = cmp.config.sources({
 			{ name = 'vim-dadbod-completion' },
+		}, {
+			{ name = 'buffer' },
 		}),
 	})
 end
