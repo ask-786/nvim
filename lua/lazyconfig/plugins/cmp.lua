@@ -44,10 +44,10 @@ local config = function()
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
 			{ name = 'luasnip' },
-			{ name = 'cmp-tw2css' },
+			{ name = 'buffer' },
 			{ name = 'path' },
 		}, {
-			{ name = 'buffer' },
+			{ name = 'vim-dadbod-completion' },
 		}),
 	})
 end
