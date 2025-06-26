@@ -1,7 +1,7 @@
 local map = require('lazyconfig.util').map_with_desc
 
 return {
-	dir = 'ask-786/translate.nvim',
+	'ask-786/translate.nvim',
 	config = function()
 		local translate = require('translate')
 
