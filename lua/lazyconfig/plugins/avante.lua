@@ -4,7 +4,6 @@ return {
 	version = false,
 	opts = { provider = 'claude' },
 	build = 'make',
-	enabled = false,
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter',
 		'stevearc/dressing.nvim',
@@ -28,6 +27,7 @@ return {
 			'MeanderingProgrammer/render-markdown.nvim',
 			opts = {
 				file_types = { 'markdown', 'Avante' },
+				latex = { enabled = false },
 			},
 			ft = { 'markdown', 'Avante' },
 		},

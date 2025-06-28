@@ -26,10 +26,12 @@ return {
 		formatters_by_ft = vim.tbl_deep_extend(
 			'force',
 			ft_factory('prettier', prettier_fts),
+			ft_factory('pg_format', { 'sql', 'mysql' }),
 			{
 				lua = { 'stylua' },
 				python = { 'isort' },
 				c = { 'clang-format' },
+				sh = { 'shfmt' },
 			}
 		),
 	},
