@@ -41,6 +41,9 @@ This repository contains a modern Neovim configuration written in Lua, optimized
   - Code screenshots with `silicon.nvim`.
   - JSON to TypeScript conversion.
   - Image support with `img-clip.nvim`.
+  - Seamless navigation between tmux panes with `vim-tmux-navigator`.
+  - Code commenting with `Comment.nvim`.
+  - Translation with `translate.nvim`.
 
 ## Prerequisites
 

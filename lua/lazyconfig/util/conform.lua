@@ -12,6 +12,7 @@ M.prettier_fts = {
 	'htmlangular',
 	'yaml',
 	'json',
+	'handlebars',
 }
 
 ---@param formatter string
