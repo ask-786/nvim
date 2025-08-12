@@ -36,6 +36,7 @@ M.live_multigrep = function(opts)
 				.iter({
 					args,
 					{
+						'-U',
 						'--color=never',
 						'--no-heading',
 						'--with-filename',
