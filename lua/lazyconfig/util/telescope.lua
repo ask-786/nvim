@@ -22,31 +22,37 @@ M.live_multigrep = function(opts)
 			end
 
 			local args = { 'rg' }
+			local options = {
+				'-U',
+				'--color=never',
+				'--no-heading',
+				'--with-filename',
+				'--line-number',
+				'--column',
+				'--smart-case',
+			}
+
 			if pieces[1] then
 				table.insert(args, '-e')
 				table.insert(args, pieces[1])
 			end
 
 			if pieces[2] then
+				local queries = vim.split(pieces[2], '  ')
+
 				table.insert(args, '-g')
-				table.insert(args, pieces[2])
+				table.insert(args, queries[1])
+
+				if queries[2] and queries[2] == 'no-smart-case' then
+					table.remove(options)
+				end
 			end
 
-			return vim
-				.iter({
-					args,
-					{
-						'-U',
-						'--color=never',
-						'--no-heading',
-						'--with-filename',
-						'--line-number',
-						'--column',
-						'--smart-case',
-					},
-				})
-				:flatten()
-				:totable()
+			if pieces[3] and pieces[3] == 'i' then
+				table.insert(options, '--smart-case')
+			end
+
+			return vim.iter({ args, options }):flatten():totable()
 		end,
 		entry_maker = make_entry.gen_from_vimgrep(opts),
 		cwd = opts.cwd,
