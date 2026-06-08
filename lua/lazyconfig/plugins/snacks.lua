@@ -5,10 +5,6 @@ return {
 	---@module 'snacks'
 	---@type snacks.Config
 	opts = {
-		bigfile = {
-			enabled = true,
-			notify = false,
-		},
 		image = { enabled = true },
 	},
 }
