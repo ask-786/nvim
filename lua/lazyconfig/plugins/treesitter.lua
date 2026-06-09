@@ -1,31 +1,34 @@
 local config = function()
-	local configs = require('nvim-treesitter.configs')
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = { "*" },
+		callback = function(args)
+			local ft = vim.bo[args.buf].filetype
+			local lang = vim.treesitter.language.get_lang(ft)
 
-	configs.setup({
-		ensure_installed = { 'javascript', 'typescript', 'lua' },
-		sync_install = false,
-		ignore_install = {},
-		modules = {},
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
-		incremental_selection = {
-			enable = true,
-			keymaps = {
-				init_selection = false, -- set to `false` to disable one of the mappings
-				node_incremental = '(',
-				node_decremental = ')',
-			},
-		},
+			if not vim.treesitter.language.add(lang) then
+				local available = vim.g.ts_available
+						or require("nvim-treesitter").get_available()
+				if not vim.g.ts_available then
+					vim.g.ts_available = available
+				end
+				if vim.tbl_contains(available, lang) then
+					require("nvim-treesitter").install(lang)
+				end
+			end
+
+			if vim.treesitter.language.add(lang) then
+				vim.treesitter.start(args.buf, lang)
+				-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+				vim.wo[0][0].foldmethod = "expr"
+			end
+		end,
 	})
 end
 
 return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ':TSUpdate',
-	branch = 'master',
 	lazy = false,
 	config = config,
 }
