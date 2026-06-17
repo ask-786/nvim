@@ -83,6 +83,18 @@ M.lsp_config = function()
 		},
 	})
 
+	vim.lsp.config('basedpyright', {
+		on_attach = M.on_attach,
+		settings = {
+			basedpyright = {
+				analysis = {
+					venvPath = '.',
+					venv = '.venv',
+				},
+			},
+		},
+	})
+
 	vim.lsp.config('rust_analyzer', { on_attach = M.on_attach })
 	-- vim.lsp.config('ts_ls', { on_attach = M.on_attach })
 	vim.lsp.config('tsgo', { on_attach = M.on_attach })
