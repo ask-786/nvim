@@ -29,7 +29,7 @@ return {
 			ft_factory('pg_format', { 'sql', 'mysql' }),
 			{
 				lua = { 'stylua' },
-				python = { 'isort' },
+				python = { 'black' },
 				c = { 'clang-format' },
 				sh = { 'shfmt' },
 			}

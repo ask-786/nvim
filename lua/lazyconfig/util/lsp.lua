@@ -83,6 +83,16 @@ M.lsp_config = function()
 		},
 	})
 
+	vim.lsp.config('pyright', {
+		on_attach = M.on_attach,
+		settings = {
+			python = {
+				venvPath = '.',
+				venv = '.venv',
+			},
+		},
+	})
+
 	vim.lsp.config('basedpyright', {
 		on_attach = M.on_attach,
 		settings = {
