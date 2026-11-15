@@ -106,7 +106,7 @@ M.lsp_config = function()
 	})
 
 	vim.lsp.config('rust_analyzer', { on_attach = M.on_attach })
-	-- vim.lsp.config('ts_ls', { on_attach = M.on_attach })
+	vim.lsp.config('ts_ls', { on_attach = M.on_attach })
 	vim.lsp.config('tsgo', { on_attach = M.on_attach })
 
 	vim.lsp.enable({ 'dartls', 'rust_analyzer' })

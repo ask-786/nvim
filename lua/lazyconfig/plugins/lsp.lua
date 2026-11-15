@@ -14,8 +14,7 @@ return {
 		opts = {
 			automatic_installation = false,
 			ensure_installed = {
-				-- 'ts_ls',
-				'tsgo',
+				'tsc',
 				'lua_ls',
 			},
 		},
