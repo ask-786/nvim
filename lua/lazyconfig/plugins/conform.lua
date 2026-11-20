@@ -29,6 +29,7 @@ return {
 			ft_factory('pg_format', { 'sql', 'mysql' }),
 			{
 				lua = { 'stylua' },
+				go = { 'goimports', 'gofmt' },
 				python = { 'black' },
 				c = { 'clang-format' },
 				sh = { 'shfmt' },
